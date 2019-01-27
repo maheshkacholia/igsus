@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+<GraphProperties>
+	<property>
+		<id>graphbackgroundcolor</id>
+		<value>black</value>
+		<type>COLOR</type>
+		<description>Graph backgroud color .</description>
+		<default>black</default>
+	</property>
+	<property>
+		<id>closinglinecolor</id>
+		<value>green</value>
+		<type>COLOR</type>
+		<description>Closing Line Color when you select graph type as line graph .</description>
+		<default>green</default>
+	</property>
+	<property>
+		<id>upcolor</id>
+		<value>green</value>
+		<type>COLOR</type>
+		<description>The color which is used to show when closing price is greater than opening price. Used in candle stick,
+		 OHLC graph and right side price display.</description>
+		<default>green</default>
+	</property>
+	<property>
+		<id>downcolor</id>
+		<value>red</value>
+		<type>COLOR</type>
+		<description>The color which is used to show when closing price is less than opening price. Used in candle stick,
+		 OHLC graph and right side price display.</description>
+		<default>red</default>
+	</property>
+	<property>
+		<id>horizontallinecolor</id>
+		<value>lightGray</value>
+		<type>COLOR</type>
+		<description>The color which is used to display Horizontal line in graph.</description>
+		<default>lightGray</default>
+	</property>
+	<property>
+		<id>pricecolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>The color which is used to display price on right side of graph at end of horizontal line .</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>timecolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>The color which is used to display time/date at bottom of graph .</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>mousemovecolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>when mouse move and cross hair is displayed this color is used.</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>mousemovepricecolor</id>
+		<value>black</value>
+		<type>COLOR</type>
+		<description>When mouse is moved and cliked this color is used to displayed price on right side .</description>
+		<default>black</default>
+	</property>
+	<property>
+		<id>leftpricecolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>price displayed at left top on mouse move .</description>
+		<default>black</default>
+	</property>
+	<property>
+		<id>boundarycolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>boundary is dispalyed using this color .</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>hlinegap</id>
+		<value>40</value>
+		<type>INTEGER</type>
+		<description>gap between two horizantal line in points .</description>
+		<default>40</default>
+	</property>
+	<property>
+		<id>vlinegap</id>
+		<value>100</value>
+		<type>INTEGER</type>
+		<description>gap between two vertical line in points .</description>
+		<default>100</default>
+	</property>
+	<property>
+		<id>buyarrowcolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>buy arrow color when you use formula .</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>sellarrowcolor</id>
+		<value>red</value>
+		<type>COLOR</type>
+		<description>sell arrow color when you use formula .</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>GraphResolution</id>
+		<value>1</value>
+		<type>INTEGER</type>
+		<description>By deafult this parameter is set up value to 1 which is daily graph. 
+you can change it any day you want for weekly set parameter to 5. monthly is 20.</description>
+		<default>1</default>
+	</property>
+	<property>
+		<id>CursorType</id>
+		<value>Cross-Hair</value>
+		<type>CURSOR</type>
+		<description>this property will set the cursor type the applicable value are Cross-Hair Cursor Mouse.</description>
+		<default>Cross-Hair</default>
+	</property>
+
+</GraphProperties>
+<ComponentDefaultProperties>
+	<property>
+		<id>drawingcomponentlinecolor</id>
+		<value>white</value>
+		<type>COLOR</type>
+		<description>default linecolor used when a drawing component is added .</description>
+		<default>white</default>
+	</property>
+	<property>
+		<id>drawingcomponentfontcolor</id>
+		<value>green</value>
+		<type>COLOR</type>
+		<description>default font color used when a drawing component is added .</description>
+		<default>green</default>
+	</property>
+	<property>
+		<id>drawingcomponentfillcolor</id>
+		<value>red</value>
+		<type>COLOR</type>
+		<description>default fill color used when a drawing component is added .</description>
+		<default>red</default>
+	</property>	
+</ComponentDefaultProperties>
+<TimeSetting>
+	<property>
+		<id>autoupdateintradaygraph</id>
+		<value>10</value>
+		<type>INTEGER</type>
+		<description>autoupdate graph time in second minimum 5 second .</description>
+		<default>10</default>
+	</property>	
+	<property>
+		<id>startdate</id>
+		<value>2005-01-01</value>
+		<type>DATE</type>
+		<description>start date this date is used to download data from internet and used as a 
+starting date from which you want to download data the date must be in form of yyyy-mm-dd.</description>
+		<default>2005-01-01</default>
+	</property>	
+	<property>
+		<id>screenDate</id>
+		<value>2009-01-01</value>
+		<type>DATE</type>
+		<description>screen date this date is used to cache data in memory . using this date you can configure how much 
+data you like to cache which later on used for stock screener,filter compare backtesting features. 
+the more data you load the more memory you will require to run the software. 
+the idea size should be keep around 70-80 bars loaded in memory as most of the indicator requires 40-50 bars. 
+by keeping this parameter optimal you can increase performance of the system in screening,querying stock
+the date must be in form of yyyy-mm-dd.</description>
+		<default>2009-01-01</default>
+	</property>	
+	<property>
+		<id>ShowGraphYear</id>
+		<value>2009-01-01</value>
+		<type>DATE</type>
+		<description>this property will set the date from which you would like you see your graph whenever 
+you open it first time. the format is yyyy-mm-dd.
+		</description>
+		<default>2009-01-01</default>
+	</property>	
+	<property>
+		<id>GraphDisplay</id>
+		<value>CANDLEGRAPH</value>
+		<type>GRAPHTYPE</type>
+		<description>this will set the display type of graph which can be line,candle or ohlc graph the applicable values are.
+		#LINEGRAPH = 1; OHLCGRAPH = 2;CANDLEGRAPH = 3;</description>
+		<default>CANDLEGRAPH</default>
+	</property>	
+</TimeSetting>
+<UrlAndLocation>
+	<property>
+		<id>explorer</id>
+		<value>C:\\Program Files\\Internet Explorer\\IEXPLORE.EXE</value>
+		<type>STRING</type>
+		<description>Internet explorer executable location</description>
+		<default>C:\\Program Files\\Internet Explorer\\IEXPLORE.EXE</default>
+	</property>	
+	<property>
+		<id>INSTALL_DRIVE</id>
+		<value>C:</value>
+		<type>STRING</type>
+		<description>igs instllation drive</description>
+		<default>C:</default>
+	</property>	
+	<property>
+		<id>downloadURL</id>
+		<value></value>
+		<type>STRING</type>
+		<description>download url specify the url from which you want to download historical data. currently pointing to yahoo 
+configure url by changing variables 
+</description>
+		<default>http://ichart.finance.yahoo.com</default>
+	</property>
+	<property>
+		<id>downloadDataFromInternet</id>
+		<value>true</value>
+		<type>STRING</type>
+		<description>set this property to true or false if you want to stop software to go to internet and 
+download data then set it to false by default it download from internet
+you can also set this property from software which will be effective only the time software is running or property is not updated
+</description>
+		<default>true</default>
+	</property>	
+	<property>
+		<id>intraDayUpdateTime</id>
+		<value>5000</value>
+		<type>INTEGER</type>
+		<description>#intraday quote update time in milliseconds
+#if you want to see intraday quote then you need to use some third party utility which can feed intraday data in intraday directory of 
+#iguidestocks installation directory by the same name as symbol code as a csv file means suppose you want to see intraday quote of aapl then 
+# the utility must save a cav file called aapl.csv in /intraday directory and update it . iguidestocks will read the file every after specified 
+#intraDayUpdateTime time specified here. 
+#The intrday file format must me like this
+#Time (must me in hh:mm:ss ),open,high,low,close,volume  . iguidestocks can internally handle to convert data in 1 min to 100 min format.
+</description>
+		<default>5000</default>
+	</property>	
+	<property>
+		<id>downloadHourGap</id>
+		<value>4</value>
+		<type>INTEGER</type>
+		<description>#this paramter is use ful if in same day you want to download data again if last download 's time is current time has gap of more than specified no
+#of hours. suppose in morning you downloaded data and at that time data is not updated with todays price as market is not closed yet
+#now after mkt closes you try again and if last file updated time and current time has gap of more than specided hours then it wlll download data from
+#internnet
+</description>
+		<default>4</default>
+	</property>	
+</UrlAndLocation>
+</properties>
