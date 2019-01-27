@@ -1,0 +1,1 @@
+select symbol,close[0],rsi[14;0]  from table where hammer == true

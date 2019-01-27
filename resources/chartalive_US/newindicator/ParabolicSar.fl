@@ -1,0 +1,6 @@
+@PARAMETER DAYS
+@VALUE 14
+@COMMENT above 70 value used for showing overbought(a sell signal) and below 30 it is oversold(a buy signal)  
+X := PARSAR[14;0]
+CIRCLE{X ,RED,"",3}   
+1

@@ -1,0 +1,16 @@
+@PARAMETER PERIOD
+@VALUE 14
+@COMMENT Standard deviation is a statistical term that provides a good indication of volatility. 
+@COMMENT It measures how widely values (closing prices for instance) are dispersed from the average. Dispersion is the difference 
+@COMMENT between the actual value (closing price) and the average value (mean closing price). The larger the difference between the 
+@COMMENT closing prices and the average price, the higher the standard deviation will be and the higher the volatility. 
+@COMMENT The closer the closing prices are to the average price, the lower the standard deviation and the lower the volatility. 
+function dev
+{
+
+	y := mov[close;$PERIOD$;S;0]
+	x := close -  y
+	x :=  x * x
+}
+sqrdev :=  mov[dev;$PERIOD$;S;0]
+sqrdev := sqrt{sqrdev}

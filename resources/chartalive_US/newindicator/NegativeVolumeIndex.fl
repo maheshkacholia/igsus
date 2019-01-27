@@ -1,0 +1,40 @@
+@PARAMETER DAYS 
+@VALUE 255
+@COMMENT The Negative Volume Index(NVI) is typically compared to a one-year (255-trading-day) moving average of its value. 
+@COMMENT When the index increases above this value, informed investors have typically been buying this security, indicating the prices 
+@COMMENT should continue to increase. When the index increases below this value, informed investors have typically been selling, 
+@COMMENT indicating a possible decrease.
+@COMMENT Based on back-testing against broad-market indices, a bull market was in progress during an upward crossing 96% 
+@COMMENT of the time and a bear market was in progress during a downward crossing 53% of the time. Therefore, this may primarily 
+@COMMENT be useful as a bull market indicator.
+function mypv 
+{
+
+if ( barno  ==  0 )
+{
+    addtoglobal{pviprev,0}
+}
+y  := 0
+if ( barno > 0 )
+{
+   if ( volume[0]  <  volume[-1] )
+   {
+   
+       x :=  (  (  Close[0]  -  close[-1]  )  *  100  )   / ( close[-1]  + 0.0001 )
+       
+       y :=  pviprev   + x   
+    }
+    else
+    {
+        y :=  pviprev 
+    }
+}
+addtoglobal{pviprev,y}
+
+y
+}
+t  :=  mov[mypv;$DAYS$;e;0]
+
+plot1{t,red}
+PLOTPRICEONLEFT{t,"Signal",red}
+mypv

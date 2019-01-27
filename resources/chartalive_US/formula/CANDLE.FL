@@ -1,0 +1,73 @@
+PATTERN := " "
+IF ( GREENCANDLE )
+{
+    PATTERN := PATTERN + " GREENCANDLE"
+    buytype := "buy" 
+}
+ELSE 
+{
+    PATTERN := PATTERN + " REDCANDLE"
+    buytype := "sell"
+}
+IF ( BEARISHEVENINGDOJISTAR )
+{
+    PATTERN := PATTERN + " BEARISHEVENINGDOJISTAR"
+    buytype := "strongsell"
+}
+IF ( BEARISHHARAMI )
+{
+    PATTERN := PATTERN + " BEARISHHARAMI"
+    buytype := "strongsell"
+}
+IF ( BULLISHENGULFING )
+{
+    PATTERN := PATTERN + " BULLISHENGULFING"
+    buytype := "strongbuy"
+}
+IF ( BULLISHHARAMI )
+{
+    PATTERN := PATTERN + " BULLISHHARAMI"
+    buytype := "strongbuy"
+ 
+}
+IF ( BULLISHMORNINGDOJISTAR )
+{
+    PATTERN := PATTERN + " BULLISHMORNINGDOJISTAR"
+    buytype := "strongbuy"
+ 
+}
+IF ( DARKCLOUDCOVER )
+{
+    PATTERN := PATTERN + " DARKCLOUDCOVER"
+     buytype := "strongsell"
+ 
+}
+IF ( HAMMER )
+{
+    PATTERN := PATTERN + " HAMMER"
+ 
+}
+IF ( HANGINGMAN )
+{
+    PATTERN := PATTERN + " HANGINGMAN"
+ 
+}
+IF ( INVERTEDHAMMER )
+{
+    PATTERN := PATTERN + " INVERTEDHAMMER"
+     buytype := "strongbuy"
+}
+
+IF ( PIERCINGLINE )
+{
+    PATTERN := PATTERN + " PIERCINGLINE"
+     buytype := "strongbuy"
+
+}
+IF ( SHOOTINGSTAR )
+{
+    PATTERN := PATTERN + " SHOOTINGSTAR"
+     buytype := "strongsell"
+
+}
+ALERT{ PATTERN }  

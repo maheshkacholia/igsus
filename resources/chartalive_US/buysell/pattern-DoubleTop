@@ -1,0 +1,4 @@
+@COMMENT Will provide stocks for which double top pattern is occuring 
+@FORMULANAME=doubletop[10;2;0]=
+@RECORDSTOUSE=200=
+select symbol,close from table where doubletop[10;2;0]  == true

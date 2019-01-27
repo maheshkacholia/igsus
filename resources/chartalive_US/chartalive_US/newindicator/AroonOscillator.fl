@@ -1,0 +1,25 @@
+@PARAMETER DAYS 
+@VALUE 14
+@COMMENT Aroon oscillator plots the difference between the Aroon up and down lines by subtracting the two lines. 
+@COMMENT This line is then plotted between a range of -100 and 100. The centerline at zero in the oscillator is considered to be a major signal 
+@COMMENT line determining the trend. The higher the value of the oscillator from the centerline point, the more upward strength there is in 
+@COMMENT the security; the lower the oscillator's value is from the centerline, the more downward pressure. A trend reversal is signaled when 
+@COMMENT the oscillator crosses through the centerline. For example, when the oscillator goes from positive to negative, a downward trend is 
+@COMMENT confirmed. Divergence is also used in the oscillator to predict trend reversals. A reversal warning is formed when the oscillator 
+@COMMENT and the price trend are moving in an opposite direction. 
+@COMMENT The Aroon lines and Aroon oscillators are fairly simple concepts to understand but yield powerful information about trends. 
+
+a := AROOPUP[$DAYS$;0]
+b := AROOPDOWN[$DAYS$;0]
+x :=   a  -  b    
+PLOTPRICEONLEFT{a,"AROOPUP",GREEN}
+PLOTPRICEONLEFT{B,"AROOPDOWN",RED}
+IF ( x > 0 )
+{ 
+     LINE{0,x ,GREEN}
+}
+ELSE
+{
+        LINE{0,x ,RED}
+}
+x

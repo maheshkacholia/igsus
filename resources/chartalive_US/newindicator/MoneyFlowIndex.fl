@@ -1,0 +1,23 @@
+@PARAMETER DAYS
+@VALUE 14
+@COMMENT Money Flow Index(MFI) 
+@COMMENT is a momentum indicator that is similar to RSI but MFI is a more rigid indicator in that it is volume-weighted, 
+@COMMENT and is therefore a good measure of the strength of money flowing in and out of a security
+@COMMENT Positive and negative divergences between the stock and the MFI can be used as buy and sell signals respectively
+@COMMENT A stock is considered "overbought" if the MFI indicator reaches 80 and above (a bearish reading). 
+@COMMENT On the other end of the spectrum, a bullish reading of 20 and below suggests a stock is "oversold". 
+if ( barno == 30 )
+{
+
+     text{60,red,"Over Bought(Sell signal)",5}
+     text{10,green,"Over Sold(Buy Signal)",5}
+
+}
+
+
+C := MFI[$DAYS$;0]
+PLOT1{80,RED}
+PLOT2{20,GREEN}
+
+C
+ 

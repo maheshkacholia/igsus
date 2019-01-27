@@ -1,0 +1,4 @@
+@COMMENT % Change in Daily Price
+@RECORDSTOUSE=2=
+#PercentageChange:  ( close[0] - close[-1] ) * 100  / close[-1]
+select symbol,close[0],close[-1],PercentageChange from table 

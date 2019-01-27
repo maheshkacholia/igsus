@@ -1,0 +1,9 @@
+@PARAMETER PERIOD
+@VALUE 20
+@COMMENT Donchian Channel is formed by taking the highest high of the daily maxima and the lowest low of the daily minima of the last n days, 
+@COMMENT then marking the area between those values on a chart.
+@COMMENT The Donchian channel is a useful indicator for seeing the volatility of a market price. If a price is stable the 
+@COMMENT Donchian channel will be relatively narrow. If the price fluctuates a lot the Donchian channel will be wider. 
+@COMMENT Its primary use, however, is for providing signals for long and short positions. If a security trades above its highest n day 
+@COMMENT high, then a long is established. If it trades below its lowest n day low, then a short is established.
+a := highindays[$PERIOD$;0] - lowindays[$PERIOD$;0]

@@ -1,0 +1,4 @@
+@COMMENT The floor pivot points, the most basic and popular type of pivots used in Forex trading 
+@COMMENT The pivot point is interpreted as the primary support/resistance level - the point at which the main trend will be born. 
+@COMMENT First-third level resistance and support points serve as additional indicators of possible trend reversal or continuation. 
+select symbol,p,s1,s2,r1,r2 from table where pivot

@@ -1,0 +1,27 @@
+
+IF ( BARNO  == 0 )
+{
+    X := GETVALUE{CLOSE[0],NOOFBARS - 1}
+    UPPERVAL :=  X * 1.15
+    DOWNVAL :=  X  *  0.85
+    ADDTOGLOBAL{UP,UPPERVAL}
+    ADDTOGLOBAL{DOWN,DOWNVAL}
+    ADDTOGLOBAL{PIVOT,X}
+
+}     
+
+B := PEAK[CLOSE[0];10]
+
+C := TROUGH[CLOSE[0];10]
+
+IF ( B <> 0 AND CLOSE[0]  >  PIVOT  AND CLOSE[0] < UP  ) 
+{
+      LINEXY{0,B,NOOFBARS,B,YELLOW}
+ 
+}
+ 
+IF ( C <> 0 AND CLOSE[0]  >  DOWN  AND  CLOSE[0] < PIVOT ) 
+{
+      LINEXY{0,C,NOOFBARS,C,RED}
+ }
+            

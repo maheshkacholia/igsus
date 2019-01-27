@@ -1,0 +1,40 @@
+@PARAMETER COLOR STOCK
+@VALUE  RED NIFTY
+#OTHER:COMPARE[$STOCK$;CLOSE[0]]
+
+IF ( BARNO == 0 )
+{
+    I := 0
+     X :=  GETVALUE{CLOSE,I}
+    WHILE ( I < NOOFBARS  )
+    {
+         Y  := GETVALUE{CLOSE,I}
+         IF ( Y > X )
+         {
+               X := Y
+         }
+         I :=  I + 1
+    } 
+    MYY := X
+    I := 0
+     X :=  GETVALUE{OTHER,I}
+    WHILE ( I < NOOFBARS  )
+    {
+         Y  := GETVALUE{OTHER,I}
+         IF ( Y > X )
+         {
+               X := Y
+         }
+         I :=  I + 1
+    } 
+    RATIO :=   MYY  /  X
+    ADDTOGLOBAL{RATIO,RATIO}
+}  
+X := OTHER * RATIO
+X1 := OTHER[-1]  *  RATIO
+PLOTPRICEONLEFT{OTHER,"$STOCK$=","$COLOR$"}
+IF ( BARNO <> 0 )
+{
+ LINEXY{BARNO - 1,X1,BARNO,X,"$COLOR$"}
+}
+   

@@ -1,0 +1,4 @@
+@COMMENT Stocks whose MACD line crossed below the signal line today after being above the signal line for the previous three days.
+@COMMENT  Bearish MACD crossovers typically happen soon after a stock has started falling after a significant rise. 
+@RECORDSTOUSE=40=
+select symbol,close[0],high[0],low[0] from table where MACDLINE[12;26;9;0] < MACDSIGNAL[12;26;9;0] AND MACDLINE[12;26;9;-1] > MACDSIGNAL[12;26;9;-1]  AND MACDLINE[12;26;9;-2] > MACDSIGNAL[12;26;9;-2] AND MACDLINE[12;26;9;-3] > MACDSIGNAL[12;26;9;-3]

@@ -1,0 +1,8 @@
+@COMMENT Stocks that had the mov. avg. of the last 50 days  below the last 200 day Mov Avg.A sell signal
+@COMMENT  Typically, the 50-day MA crosses the 200-day MA soon after a stock has turned around and started moving lower after 
+@COMMENT (This will show all stocks for which diff is in range of 5%) 
+@RECORDSTOUSE=220=
+#MOV50:SMA[50;0]
+#MOV200:SMA[200;0]
+#PerchangeBetween2MA:  ( SMA[50;0] -  SMA[200;0] ) * 100 / SMA[200;0] 
+select symbol,close[0],high[0],low[0],MOV50,mov200,PerchangeBetween2MA  from table where PerchangeBetween2MA < 0  and PerchangeBetween2MA > -5

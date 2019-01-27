@@ -1,0 +1,38 @@
+@PARAMETER SHORTPERIOD LONGPERIOD  SIGNAL
+@VALUE 12 26 9
+@COMMENT The Percentage Volume Oscillator (PVO) is the percentage difference between two moving averages of volume.
+@COMMENT The PVO can be used to identify periods of expanding or contracting volume in three different ways: 
+@COMMENT Centerline Crossovers: the PVO oscillates above and below the zero line. When PVO is positive, the shorter EMA of volume is 
+@COMMENT greater than the longer EMA of volume. When PVO is negative, the shorter EMA of volume is less than the longer EMA of volume. 
+@COMMENT A PVO above zero indicates that volume levels are generally above average and relatively heavy. When the PVO is below zero, 
+@COMMENT volume levels are generally below average and light.
+@COMMENT Directional Movement: General directional movement of the PVO can offer a quick visual assessment of volume patterns. 
+@COMMENT A rising PVO signals that volume levels are increasing and a falling PVO signals that volume levels are decreasing.
+@COMMENT Moving Average Crossovers: The last variable in the PVO forms the signal line. For example: PVO(12,26,9) would include a 9-day 
+@COMMENT EMA of PVO as well as a histogram representing the difference between the PVO and its 9-day EMA. 
+@COMMENT When PVO moves above its signal line, volume levels are generally increasing. When PVO moves below its signal line, volume levels are generally decreasing
+
+function mypvo
+{
+	xs := mov[volume;$SHORTPERIOD$;E;0]
+	xl := mov[volume;$LONGPERIOD$;E;0]
+	pvo := 0
+	if ( barno > $LONGPERIOD$ )
+	{
+		pvo :=  ( ( xs - xl ) / xl )  * 100
+	}
+	pvo
+	
+}
+signal :=  mov[mypvo;$SIGNAL$;E;0]
+
+PLOT1{signal,red}
+plot2{0,green)
+PLOTPRICEONRIGHT{0,green}
+
+PLOTPRICEONLEFT{signal,"SIGNAL",red}
+
+PLOTPRICEONRIGHT{signal,RED}
+mypvo
+      
+ 

@@ -1,0 +1,24 @@
+@PARAMETER DAYS 
+@VALUE 14
+@COMMENT Average Directional Index (ADX) to evaluate the strength of a current trend, be it up or down. 
+@COMMENT ADX is an oscillator that fluctuates between 0 and 100. Readings above 60 are relatively rare. 
+@COMMENT Low readings, below 20, indicate a weak trend and high readings, above 40, indicate a strong trend. 
+@COMMENT The indicator does not grade the trend as bullish or bearish, but merely assesses the strength of the current trend. 
+@COMMENT A reading above 40 can indicate a strong downtrend as well as a strong uptrend
+PLOT1{40,GREEN}
+PLOT2{20,RED}
+
+PLOTPRICEONRIGHT{20,RED}
+
+PLOTPRICEONRIGHT{40,GREEN}
+if ( barno == 30 )
+{
+
+     text{50,green,"Strong Trend(Bullish or Bearish",5}
+     text{10,red,"Weak Trend",5}
+
+}
+ADX[$DAYS$;0]
+ 
+
+

@@ -1,0 +1,55 @@
+@PARAMETER MINCHANGE  TOPDIFF
+@VALUE 10   3
+@COMMENT The triple top is a reversal pattern made up of three equal highs followed by a break below support.
+@COMMENT As the triple top develops, overall volume levels usually decline. Volume sometimes increases near the highs. 
+@COMMENT After the third high, an expansion of volume on the subsequent decline and at the support break greatly reinforces the 
+@COMMENT soundness of the pattern.the triple top is not complete until a support break. The lowest point of the formation, 
+@COMMENT which would be the lowest of the intermittent lows, marks this key support level.The distance from the support break to 
+@COMMENT highs can be measured and subtracted from the support break for a price target. The longer the pattern develops, the 
+@COMMENT more significant is the ultimate break. 
+
+#P:PEAK[CLOSE[0];$MINCHANGE$] 
+#T:TROUGH[CLOSE[0];$MINCHANGE$] 
+B := P
+
+IF ( B <> 0   ) 
+{
+     X  :=   GETNOTZEROVALUE{2,P}
+   X1  :=   GETNOTZEROVALUE{3,P}
+    
+   D :=  ( ( X - B ) * 100 )  /  ( X + .001 )
+     D :=  ABS{D}
+     X  :=   GETNOTZEROVALUE{2,P}
+     D1 :=  ( ( X1 - B ) * 100 )  /  ( X1 + .001 )
+     D1 :=  ABS{D1}
+
+     IF ( D < $TOPDIFF$ AND  D1 < $TOPDIFF$  )
+     {
+           POS := GETNOTZEROBARAWAY{2,P}
+                 LINEXY{BARNO,B,BARNO - POS,X,YELLOW}
+
+           POS1 := GETNOTZEROBARAWAY{3,P}
+                 LINEXY{BARNO - POS ,X,BARNO  - POS1 ,X1,YELLOW}
+           
+GETVALUE{TEXT{ CLOSE[0],RED,"T1-" + CLOSE[0],8 },BARNO - POS} 
+        GETVALUE{TEXT{ CLOSE[0],RED,"T2-"  + CLOSE[0] ,8 },BARNO } 
+        GETVALUE{TEXT{ CLOSE[0],RED,"T3-"  + CLOSE[0] ,8 },BARNO - POS1 } 
+      
+      TVAL  := GETNOTZEROVALUE{1,T}
+      TPOS :=  BARNO - GETNOTZEROBARAWAY{1,T} 
+       LINEXY{TPOS - 30,TVAL,TPOS + 30,TVAL,YELLOW} 
+
+      TVAL1  := GETNOTZEROVALUE{2,T}
+      TPOS1 :=  BARNO - GETNOTZEROBARAWAY{2,T} 
+       LINEXY{TPOS1 - 30,TVAL1,TPOS1 + 30,TVAL1,YELLOW} 
+        
+GETVALUE{TEXT{ CLOSE[0],RED,"N1-" + CLOSE[0] ,8 },TPOS } 
+GETVALUE{TEXT{ CLOSE[0],RED,"N2-" + CLOSE[0] ,8 },TPOS1 } 
+      
+      
+  }
+ 
+}
+ALERTTEXT{"T1-TOP1,T2-TOP2,T3-TOP3,N1-NECKLINE,N2-NECKLINE2"}
+ALERTTEXT{"TRIPLE TOP PATTERN"}
+     

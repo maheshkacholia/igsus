@@ -1,0 +1,26 @@
+@PARAMETER LOWDAYS HIGHDAYS
+@VALUE 30 81
+@COMMENT Rahil Mohinder Oscillator System. Buy signal when histogram is in green and sell when red
+
+#A:RMO
+
+C := MOV[A;$LOWDAYS$;E]
+PLOT1{C,RED}
+PLOTPRICEONLEFT{C,"RMO" + $LOWDAYS$,RED}
+
+A := C  -  MOV[A;$HIGHDAYS$;E]
+PLOTPRICEONLEFT{A,"HISTOGRAM" ,WHITE}
+
+IF ( A > 0 )
+{
+@     PLOTMAIN1{CLOSE,WHITE}
+     LINE{0,A ,GREEN}
+
+}
+ELSE 
+{
+@    PLOTMAIN1{CLOSE,RED}
+    LINE{0,A ,RED}
+
+} 
+MOV[A;$HIGHDAYS$;E]   

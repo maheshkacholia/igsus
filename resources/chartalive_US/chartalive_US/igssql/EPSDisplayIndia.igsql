@@ -1,0 +1,2 @@
+@eps value of stock for last 5 quarter only for india after downloading result
+select symbol,close[0],QUARTER[0;0],BASICEPS[0;0],BASICEPS[1;0],BASICEPS[2;0],BASICEPS[3;0],BASICEPS[4;0]

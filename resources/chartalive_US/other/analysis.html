@@ -1,0 +1,180 @@
+
+<!--	String[] value2 = {"Symbol","Name","Price","Prev Close","% Change","High","Low","Traded Value"}; -->
+
+<table width="50%" border="1" cellpadding="1" bordercolor="#e0dfe3" cellspacing="1" bgcolor="#ffff99">
+<tr valign="top">
+<td bgcolor="#EDE275" width="30%"><font size="2" color="#000000" face="Arial">
+
+<b>Detailed Analaysis for %=SYMBOL% by <a href="http://www.iguidestocks.com">iGuideStocks</a></b>
+</td>
+</tr>
+</table>
+
+<table width="50%" border="1" cellpadding="1" bordercolor="#e0dfe3" cellspacing="1" bgcolor="#ffff99">
+<tr valign="top">
+<td bgcolor="#EDE275" width="30%"><font size="2" color="#000000" face="Arial" >
+<b>Support & Resistant </b>
+</font>
+</td>
+<td bgcolor="#EDE275" width="20%"><font size="2" color="#000000" face="Arial">
+&nbsp;
+</td>
+<td bgcolor="#EDE275" width="50%"><font size="2" color="#000000" face="Arial">
+&nbsp;
+</td>
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>Support & Resistant</b></font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<b>Value 1</b>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<b>Value 2</b>
+		</font>
+	</td>
+</tr>
+
+<tr valign="top">
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">Support</font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=Support1%
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=Support2%
+		</font>
+	</td>
+
+
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">Resistance</font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=Resistance1%
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=Resistance1%
+		</font>
+	</td>
+</tr>
+</table>
+
+<table width="50%" border="1" cellpadding="1" bordercolor="#e0dfe3" cellspacing="1" bgcolor="#ffff99">
+
+<tr valign="top">
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>Time </b></font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>Value </b></font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>% change </b></font>
+		</font>
+	</td>
+
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	Weekly High 
+	</font>
+	</td>
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=HIGHINDAYS[5;0]%
+	</td>		
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=PERDIFFWEEKLYHIGH%
+	</td>		
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	Weekly Low
+	</font>
+	</td>
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=LOWINDAYS[5;0]%
+	</td>		
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=PERDIFFWEEKLYLOW%
+	</td>		
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	Monthly High 
+	</font>
+	</td>
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=HIGHINDAYS[20;0]%
+	</td>		
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=PERDIFFMONTHLYHIGH%
+	</td>		
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	Monthly Low
+	</font>
+	</td>
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=LOWINDAYS[20;0]%
+	</td>		
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=PERDIFFMONTHLYLOW%
+	</td>		
+</tr>
+
+<tr valign="top">
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	10 Day Simple Moving Average
+	</font>
+	</td>
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=SMA[10;0]%
+	</td>		
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	</td>		
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	40 Day Simple Moving Average
+	</font>
+	</td>
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	%=SMA[40;0]%
+	</td>		
+	<td bgcolor="#ECE5B6" align="left"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">
+	</td>		
+</tr>
+
+</table>

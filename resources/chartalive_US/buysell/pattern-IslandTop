@@ -1,0 +1,1 @@
+select symbol,open,low,high,volume from table where close[-2] > ema[14;-2] and low[-1] > high[-2] * 1.02 and ( high[0] < low[0]  *  0.975 )

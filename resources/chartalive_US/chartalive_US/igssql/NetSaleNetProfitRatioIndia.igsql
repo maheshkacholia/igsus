@@ -1,0 +1,3 @@
+@current Netsale netprofit ratio in percentage for IGSIndia ( download financial data before using )
+#ratio: ( netprofit[0;0]  *  100 ) / netsales[0;0]
+select symbol,close[0],QUARTER[0;0],netsales[0;0],netprofit[0;0],ratio[0]  from  table  where ratio[0] < 100 sortby -1 * ratio[0]

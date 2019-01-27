@@ -1,0 +1,37 @@
+@PARAMETER SHORTPERIOD LONGPERIOD  SIGNAL
+@VALUE 12 26 9
+@COMMENT The Percentage Price Oscillator (PVO) is the percentage difference between two moving averages of closing price.
+@COMMENT As with its cousin, MACD, the Percentage Price Oscillator is shown with a signal line, a histogram and a centerline. 
+@COMMENT Signals are generated with signal line crossovers, centerline crossovers and divergences
+function mypvo
+{
+	xs := mov[close;$SHORTPERIOD$;E;0]
+	xl := mov[close;$LONGPERIOD$;E;0]
+	pvo := 0
+	if ( barno > $LONGPERIOD$ )
+	{
+		pvo :=  ( ( xs - xl ) / xl )  * 100
+	}
+	pvo
+	
+}
+signal :=  mov[mypvo;$SIGNAL$;E;0]
+c := mypvo - signal
+IF ( C > 0 )
+{ 
+     LINE{0,C ,GREEN}
+}
+ELSE
+{
+        LINE{0,C ,RED}
+}
+PLOT1{signal,red}
+plot2{0,green)
+PLOTPRICEONRIGHT{0,green}
+
+PLOTPRICEONLEFT{signal,"SIGNAL",red}
+
+PLOTPRICEONRIGHT{signal,RED}
+mypvo
+      
+ 

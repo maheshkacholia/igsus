@@ -1,0 +1,5 @@
+@COMMENT Shows momentum preceding it has stopped.
+@COMMENT first day wide candle ( Green) that closes near the top of the range. The sellers are still in control of this stock. 
+@COMMENT Then on the second day, there is only a narrow range candle that closes up for the day(red).
+@RECORDSTOUSE=5=
+select symbol,close[0]  from table where BEARISHHARAMI == true

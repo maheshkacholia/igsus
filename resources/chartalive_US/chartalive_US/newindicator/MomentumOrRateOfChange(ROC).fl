@@ -1,0 +1,6 @@
+@PARAMETER DAYPERIOD
+@VALUE 14
+@COMMENT Momentum Indicator is change of price for specified period.The momentum indicator identifies when the price is moving upwards
+@COMMENT or downwards, and also by how much the price is moving upwards or downwards. When the momentum indicator is above 0 (zero), 
+@COMMENT the price has upwards momentum, and when the momentum indicator is below 0 (zero) the price has downwards momentum.
+ M := Close - Close[-$DAYPERIOD$]

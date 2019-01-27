@@ -1,0 +1,22 @@
+@PARAMETER PERIOD1 PERIOD2 SIGNAL
+@VALUE 12 26 9
+@COMMENT One of good leading buy/sell indicator formula.Gives good result . This formula should be used with some  
+@COMMENT other indicators. It gives short term buy/sell signal . The formula is developed using Mahesh Moving Average 
+@COMMENT which is iGuideStocks's own developed indicator.This indicator use Volume is calculation so make sure 
+@COMMENT 1)at least one year data is used 2)stock is not splitted and if splitted proper adjustement done 
+#X:MMA[$PERIOD1$;0] - MMA[$PERIOD2$;0]
+A := EMAANY[X[0];$SIGNAL$;0]
+A1 := EMAANY[X[0];$SIGNAL$;-1]
+A2 := EMAANY[X[0];$SIGNAL$;-2]
+
+IF ( X[0] > A AND X[-1] < A1 AND X[-2] < A2 )
+{
+BUY{ close[0]} 
+BUYTYPE := "STRONGBUY"
+}
+IF ( X[0] < A AND X[-1] > A1 AND X[-2] > A2 )
+{
+SELL{ close[0]}
+BUYTYPE := "STRONGSELL"
+} 
+  

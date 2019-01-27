@@ -1,0 +1,3 @@
+@this formula calculate how much % netprofit change compare to same quarter a year ago  IGSIndia ( download financial data before using )
+#netprofitchange :  ( NETPROFIT[0;0] - NETPROFIT[4;0]  ) * 100 / netprofit[4;0]  
+select symbol,close[0],QUARTER[0;0],NETPROFIT[0;0],NETPROFIT[4;0],netprofitchange[0] from table where netprofitchange[0] < 10000 sortby -1 * netprofitchange[0] 

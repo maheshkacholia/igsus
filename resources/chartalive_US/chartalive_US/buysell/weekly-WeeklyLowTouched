@@ -1,0 +1,1 @@
+select symbol,close[0],low[0],lowindays[5;0]  from table where low[0] <= lowindays[5;0] 

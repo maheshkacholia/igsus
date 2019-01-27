@@ -1,0 +1,2 @@
+#diff: ( volume[0]  )  /  volume[-1]
+select symbol,close[0],volume[0],volume[-1],diff[0]  from table  sortby  -1 * diff[0]

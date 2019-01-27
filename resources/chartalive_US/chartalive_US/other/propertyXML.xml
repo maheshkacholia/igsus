@@ -1,0 +1,298 @@
+<properties>
+	<GraphProperties>
+		<property>
+			<id>Graph Back Ground Color</id>
+			<value>Black</value>
+			<type>Color</type>
+			<description>Graph's Backgroud Color</description>
+			<default>Black</default>
+		</property>
+		<property>
+			<id>Closing Line Color</id>
+			<value>Green</value>
+			<type>Color</type>
+			<description>Closing Line Color when graph type is selected as line
+				graph</description>
+			<default>Green</default>
+		</property>
+		<property>
+			<id>Up Color</id>
+			<value>Green</value>
+			<type>Color</type>
+			<description>Color when closing price is greater than opening price.
+				Used in candle stick,OHLC graph and price display</description>
+			<default>Green</default>
+		</property>
+		<property>
+			<id>Down Color</id>
+			<value>Red</value>
+			<type>Color</type>
+			<description>Color when closing price is greater than opening price.
+				Used in candle stick,OHLC graph and price display</description>
+			<default>Red</default>
+		</property>
+		<property>
+			<id>Horizontal Line Color</id>
+			<value>Dark Gray</value>
+			<type>Color</type>
+			<description>Color of Horizontal Line on a Graph.</description>
+			<default>Light Gray</default>
+		</property>
+		<property>
+			<id>Vertical Line Color</id>
+			<value>Dark Gray</value>
+			<type>Color</type>
+			<description>Color of Vertical Line on a Graph.</description>
+			<default>Light Gray</default>
+		</property>
+		<property>
+			<id>Price Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Color of price on the right side</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Time Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Color of time/date at bottom of the graph</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Mouse Move Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Color when mouse moves and cross hair is displayed
+			</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Mouse Move Price Color</id>
+			<value>Black</value>
+			<type>Color</type>
+			<description>Price displayed when mouse is clicked on the graph
+			</description>
+			<default>Black</default>
+		</property>
+		<property>
+			<id>Left Price Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Price displayed at topleft on mouse move</description>
+			<default>Black</default>
+		</property>
+		<property>
+			<id>Boundary Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Boundary Color</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Horizontal Line Gap</id>
+			<value>40</value>
+			<type>Integer</type>
+			<description>Gap between two horizantal line in points</description>
+			<default>40</default>
+		</property>
+		<property>
+			<id>Vertical Line Gap</id>
+			<value>100</value>
+			<type>Integer</type>
+			<description>Gap between two vertical line in points</description>
+			<default>100</default>
+		</property>
+		<property>
+			<id>Buy Arrow Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Buy Arrow Color when using formula</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Sell Arrow Color</id>
+			<value>Red</value>
+			<type>Color</type>
+			<description>Sell Arrow Color when using formula</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Graph Resolution</id>
+			<value>1</value>
+			<type>Integer</type>
+			<description>Default value is daily = 1, for Weekly = 5, for Monthly
+				= 20</description>
+			<default>1</default>
+		</property>
+		<property>
+			<id>Cursor Type</id>
+			<value>Cross-Hair</value>
+			<type>CURSOR</type>
+			<description>Valid values are: Cross-Hair or Cursor Mouse
+			</description>
+			<default>Cross-Hair</default>
+		</property>
+		<property>
+			<id>Graph Display</id>
+			<value>Line Graph</value>
+			<type>GRAPHTYPE</type>
+			<description>Type of graph on starting the tool LINEGRAPH = 1;
+				OHLCGRAPH = 2;CANDLEGRAPH = 3;</description>
+			<default>Candle Graph</default>
+		</property>
+	</GraphProperties>
+	<ComponentProperties>
+		<property>
+			<id>Drawing Component Line Color</id>
+			<value>White</value>
+			<type>Color</type>
+			<description>Drawing Component Line Color</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Drawing Component Font Color</id>
+			<value>Green</value>
+			<type>Color</type>
+			<description>Drawing Component Font Color</description>
+			<default>Green</default>
+		</property>
+		<property>
+			<id>Drawing Component Fill Color</id>
+			<value>Black</value>
+			<type>Color</type>
+			<description>Drawing Component Fill Color</description>
+			<default>Red</default>
+		</property>
+	</ComponentProperties>
+	<TimeSetting>
+		<property>
+			<id>Auto Update Intraday Graph</id>
+			<value>5</value>
+			<type>Integer</type>
+			<description>Auto update of graph in seconds. Minimum is 5 seconds
+			</description>
+			<default>5</default>
+		</property>
+		<property>
+			<id>Start Date</id>
+			<value>2005-01-01</value>
+			<type>Date</type>
+			<description>Start date to download data, If value is 2005-01-01 then
+				tool will download all the data from Jan 1st 2005. Date format:
+				yyyy-mm-dd</description>
+			<default>2005-01-01</default>
+		</property>
+		<property>
+			<id>Screen Date</id>
+			<value>2013-7-1</value>
+			<type>Date</type>
+			<description>Screen Date is used to cache data in memory for advance
+				feature as stock screener etc. Keep atleast 3 months worth of data
+				in memory .If you tried to load a more data and memeory is not
+				sufficient then you will get outofmemory exception and datamanager
+				will hang Format: yyyy-mm-dd</description>
+			<default>2009-06-01</default>
+		</property>
+		<property>
+			<id>Show Graph Year</id>
+			<value>2010-1-1</value>
+			<type>Date</type>
+			<description>Date from which you would like to see the graphs.
+				Format: yyyy-mm-dd   </description>
+			<default>2009-01-01</default>
+		</property>
+	</TimeSetting>
+	<UrlAndLocation>
+		<property>
+			<id>Explorer</id>
+			<value>C:\\Program Files\\Internet Explorer\\IEXPLORE.EXE</value>
+			<type>String</type>
+			<description>Default Browser Location, Please change if your browser
+				is in different location</description>
+			<default>C:\\Program Files\\Internet Explorer\\IEXPLORE.EXE</default>
+		</property>
+		<property>
+			<id>Install Drive</id>
+			<value>C:</value>
+			<type>String</type>
+			<description>Software Installation Drive</description>
+			<default>C:</default>
+		</property>
+		<property>
+			<id>Download URL</id>
+			<value>http://ichart.finance.yahoo.com</value>
+			<type>String</type>
+			<description>Data Download URL. Change the URL if you want data from
+				different source. </description>
+			<default>http://ichart.finance.yahoo.com</default>
+		</property>
+		<property>
+			<id>Download Data From Internet</id>
+			<value>True</value>
+			<type>Boolean</type>
+			<description>If you do not want to connect to internet set this value
+				to false </description>
+			<default>True</default>
+		</property>
+		<property>
+			<id>Download Hour Gap</id>
+			<value>4</value>
+			<type>Integer</type>
+			<description>(For IGS World)Difference in hours between next download
+			</description>
+			<default>4</default>
+		</property>
+		<property>
+			<id>Intraday Data Source</id>
+			<value>LIVESOURCE2</value>
+			<type>INTRADAYDATATYPE</type>
+			<description>(For IGS India only)Set up your Intraday data source
+				(Currently available only for India market). If you want to get live
+				data through yahoo then please setup your yahoo login account from
+				main menu. LIVESOURCE1 is 1 minute delayed data. LIVESOURCE2 is live
+				data but sometimes due to network traffic it is slightly delayed.
+			</description>
+			<default>SOURCE1</default>
+		</property>
+		<property>
+			<id>Yahoo Hour Difference</id>
+			<value>9</value>
+			<type>Integer</type>
+			<description>(For IGS India)Check the time from yahoo quote site and
+				adjust it by adding number of hours to it. 30 minutes are already
+				added so only put hours in the value field. </description>
+			<default>9</default>
+		</property>
+	</UrlAndLocation>
+	<ResultAndColor>
+		<property>
+			<id>Result Directories</id>
+			<value>result</value>
+			<type>String</type>
+			<description>This value isused to store result data. You can put
+				multiples directries which should be under igs installation
+				directory.Suppose from 2 different sources you are getting different
+				info then you can provide value like result,result1 and software
+				will load both files when it will scan fundamental data.
+			</description>
+			<default>result</default>
+		</property>
+		<property>
+			<id>Sql Output Color1</id>
+			<value>Yellow</value>
+			<type>Color</type>
+			<description>default Color(1) for displaying result from sql or
+				compare strategy.</description>
+			<default>White</default>
+		</property>
+		<property>
+			<id>Sql Output Color2</id>
+			<value>Green</value>
+			<type>Color</type>
+			<description>default Color(2) for displaying result from sql or
+				compare strategy.</description>
+			<default>White</default>
+		</property>
+	</ResultAndColor>
+</properties>

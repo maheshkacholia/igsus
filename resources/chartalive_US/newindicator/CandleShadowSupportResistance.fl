@@ -1,0 +1,52 @@
+@PARAMETER PERIOD1
+@VALUE 10
+@COMMENT This is a custom - made Formula based on Candlesticks called CANDLE SHADOW SUPPORT - RESISTANCE (by John D. Kontessis) 
+@COMMENT A candle's shadow tends to get longer as prices get closer to support-resistance levels, or at change in Trend 
+@COMMENT (e.g. pullbacks or entry in ranging periods). As prices reach a Support level (or when building a support) the candles' lower shadows get longer. 
+@COMMENT Consequently, as prices reach a Resistance the candles' upper shadows get longer. 
+@COMMENT In this indicator after measuring the shadows of the candles it "draw" a Period1 Mov.Average of the size of the shadows 
+@COMMENT The first Formula "CandleShadow Resistance" measures the upper shadow and the second Formula "CandleShadow Support" measures 
+@COMMENT the lower shadow.In an UPTREND : Higher Tops in "CandleShadow Resistance " and simultaneously lower tops in "CandleShadow Support" , 
+@COMMENT state a weakness of the uptrend.(bearish signal). Lower Tops in "CandleShadow Resistance " and simultaneously higher tops in "CandleShadow Support" , 
+@COMMENT state a strength of the uptrend. (bullish signal). In a DOWNTREND : Higher Tops in "CandleShadow Resistance " and simultaneously lower tops in "CandleShadow Support" , 
+@COMMENT state a strength of the downtrend. (bearish signal). Lower Tops in "CandleShadow Resistance " and simultaneously higher tops in "CandleShadow Support" , 
+
+function ShadowResistance
+{
+  x :=  ( HIGH - OPEN )
+  if ( OPEN < CLOSE )
+  {
+ 	x :=  HIGH - CLOSE 
+  }
+  x
+ 
+}
+function ShadowSupport
+{
+  x :=  ( close - low )
+  if ( close > open )
+  {
+ 	x :=  open - low 
+  }
+  x
+}
+
+y := Mov[ShadowResistance;$PERIOD1$;S]
+
+
+
+
+z := Mov[ShadowSupport;$PERIOD1$;S]
+if ( barno < 2 * $PERIOD1$  )
+{
+    y := 0
+    z := 0
+}
+plot1{y,red}
+plot2{z,green}
+
+PLOTPRICEONLEFT{y,"ShadowResistance",red}
+PLOTPRICEONLEFT{z,"ShadowSupport",green}
+
+z
+

@@ -1,0 +1,20 @@
+@COMMENT  A rising Price and Volume Trend confirms an up-trend and a falling PVT confirms a down-trend.
+@COMMENT Bullish divergence between PVT and price warns of market bottoms.
+@COMMENT Bearish divergence between PVT and price warns of market tops.
+@COMMENT In an up-trend, if price makes a new High (a higher peak than the last) but the indicator fails to do so, 
+@COMMENT that is a bearish divergence.
+@COMMENT In a down-trend, if price makes a new Low (a lower trough than the last) but the indicator does not, 
+@COMMENT a bullish divergence occurs.
+if ( barno == 0 )
+{
+    addtoglobal{pvtprev,0}
+}
+x  :=  volume[0]  / 1000
+y  := 0
+if ( barno > 0 )
+{
+   y :=   (   x    *   (  close[0]  -   close[-1]    )    )    /    (    close[-1]   +  0.001   )
+}
+pvt  :=  pvtprev  +  y
+addtoglobal{pvtprev,pvt}
+pvt

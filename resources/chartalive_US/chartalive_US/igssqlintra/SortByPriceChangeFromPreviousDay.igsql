@@ -1,0 +1,2 @@
+#x: ( close - hist[close]  )  * 100  / close 
+select symbol,close,x,hist[close] from table  where x > 0 sortby  -1 * x

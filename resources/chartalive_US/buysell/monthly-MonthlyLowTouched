@@ -1,0 +1,4 @@
+@COMMENT Stocks which has touched Monthly(last 20 trading days ) Low
+@RECORDSTOUSE=25=
+#MonthlyLow:highindays[20;0]
+select symbol,close[0],high[0],low[0],MonthlyLow  from table where close[0] >= MonthlyLow[20;0]

@@ -1,0 +1,3 @@
+@Camarilla pivot points is a set of eight very probable levels which resemble support and resistance values for a current trend. The origin and the precise way to calculate 
+@these pivot points are unclear. The most important is that these pivot points work for all traders and help in setting the right stop-loss and take-profit orders
+select symbol,close[0],r4,r3,r2,r1,s4,s3,s2,s1 from table where CamarillaPivotPoints

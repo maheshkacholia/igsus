@@ -1,0 +1,13 @@
+A := AROOPOSI[14;0] > 50 AND AROOPOSI[14;-1] < 50
+B := AROOPOSI[14;0]  <  -49 AND AROOPOSI[14;-1]  >  -50
+alert := "AROOP is " + AROOPOSI[14;0]  
+IF ( A )
+{
+ BUY{}
+ buytype := "strongbuy"
+
+}
+IF ( B )
+{
+ buytype := "strongsell"
+} 

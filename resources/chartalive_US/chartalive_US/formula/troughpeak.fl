@@ -1,0 +1,13 @@
+
+B := GETNOTZEROVALUE{0,PEAK[HIGH;0.5]}
+C  := GETNOTZEROVALUE{0,TROUGH[LOW;0.5]}
+
+IF ( B  <> 0  )
+{
+      PLOT1{B,YELLOW}
+ 
+}
+IF (  C <>   0 )
+{
+    PLOT2{C, RED}
+}         

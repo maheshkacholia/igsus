@@ -1,0 +1,1 @@
+select symbol,open[0],close[0],close[-1],ubband[14;2;0],ubband[14;2;-1] from table where close[-1] <= ubband[14;2;-1] and close[0] > ubband[14;2;0]

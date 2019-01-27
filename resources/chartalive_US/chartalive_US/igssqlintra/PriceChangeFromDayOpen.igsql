@@ -1,0 +1,2 @@
+#x:( close - dayopen ) * 100 / dayopen
+select symbol,close,dayhigh,daylow,dayopen,x,totalvolume from table where sortby x

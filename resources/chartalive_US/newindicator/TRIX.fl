@@ -1,0 +1,27 @@
+@PARAMETER DAYPERIOD  SIGNAL
+@VALUE 14 9
+@COMMENT The TRIX is a leading indicator and can be used to anticipate turning points in a trend through its divergence with the 
+@COMMENT by using 9 day moving average of TRIX it can be used as  "signal line" to anticipate where the TRIX is heading. 
+@COMMENT TRIX line crossovers with its "signal line" can be used as buy/sell signals as well. 
+function x
+{
+#C:mov[mov[mov[close;$DAYPERIOD$;e;0];$DAYPERIOD$;e;0];$DAYPERIOD$;e;0]
+	y :=  ( ( c[0] - c[-1] )  * 100 ) / c[-1] 
+		if ( y > 100 or y < -100 )
+		{
+		    y := 0
+		}
+	y
+
+}
+y := mov[x;$SIGNAL$;S;0]
+if ( y > 1 or y < -1 )
+{
+    y := 0
+}
+
+plot1{y,red}
+PLOTPRICEONLEFT{y,"SIG",RED}
+x
+
+ 

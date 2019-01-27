@@ -1,0 +1,6 @@
+@COMMENT GAPUP after  a Bullish Engulfing Signal A Strong Change in investor Sentiment(Strong Buy signal)
+@COMMENT Shows Only Long Position, occures rarely. Genreally gives good buy oppurtunity
+@RECORDSTOUSE=5=
+#G:GAPUP
+#BUL:BULLISHENGULFING
+select Symbol,close,open,high,low,volume from table where  ( G[0] AND  BUL[-1] )

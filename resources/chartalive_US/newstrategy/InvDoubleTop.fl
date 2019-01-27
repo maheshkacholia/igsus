@@ -1,0 +1,41 @@
+@PARAMETER MINCHANGE  TOPDIFF
+@VALUE 10   3
+@COMMENT PROVIDE MINCHANGE TO GET PEAK & MAX DIFF  IN NEAREST TOPS
+@COMMENT A inverse double top is a reversal chart pattern which is defined by a chart where a financial instrument 
+@COMMENT makes a drop to a particular level, then run back from that level, then makes a second drop at that level, 
+@COMMENT and then finally run back  again.
+@COMMENT Significance for traders
+@COMMENT The Inverse double top pattern shows supply outpacing demand (selles predominate) up to the first top, 
+@COMMENT causing prices to down. The supply/demand situation then reverses; demand outpaces supply (buyers predominate), 
+@COMMENT causing prices to up. After a price "valley", selles again predominate and prices down. 
+@COMMENT If traders see that prices are not pulling past their level at the first bottom, buyers may again prevail, 
+@COMMENT increasing prices and causing a Inverse double top to form. It is generally regarded as a bullish sign if prices up above 
+@COMMENT their level at the earlier valley between the two drops.
+#P:TROUGH[CLOSE[0];$MINCHANGE$] 
+#T:PEAK[CLOSE[0];$MINCHANGE$] 
+B := P
+
+IF ( B <> 0   ) 
+{
+     X  :=   GETNOTZEROVALUE{2,P}
+     D :=  ( ( X - B ) * 100 )  /  ( X + .001 )
+     D :=  ABS{D}
+     IF ( D < $TOPDIFF$ )
+     {
+           POS := GETNOTZEROBARAWAY{2,P}
+                 LINEXY{BARNO,B,BARNO - POS,X,YELLOW}
+           GETVALUE{TEXT{ CLOSE[0],RED,"T1-" + CLOSE[0],8 },BARNO - POS} 
+        GETVALUE{TEXT{ CLOSE[0],RED,"T2-"  + CLOSE[0] ,8 },BARNO } 
+      
+      TVAL  := GETNOTZEROVALUE{1,T}
+      TPOS :=  BARNO - GETNOTZEROBARAWAY{1,T} 
+       LINEXY{TPOS - 30,TVAL,TPOS + 30,TVAL,YELLOW} 
+        GETVALUE{TEXT{ CLOSE[0],RED,"N-" + CLOSE[0] ,8 },TPOS } 
+      
+      
+  }
+ 
+}
+ALERTTEXT{"T1-TOP1,T2-TOP2,N-NECKLINE"}
+ALERTTEXT{"DOUBLE TOP PATTERN"}
+  

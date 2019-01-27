@@ -1,0 +1,6 @@
+@COMMENT Show list of all stocks and difference from yeralyhigh and yearlylow
+@COMMENT Make sure you while downloading start date is one year aaaand more from today
+@RECORDSTOUSE=270=
+#PerUpFromYearlyLow:( close - lowindays[260;0] ) * 100 / lowindays[260;0]
+#PerDownFromYearlyHigh:( highindays[260;0] - close  ) * 100 / highindays[260;0]
+select symbol,close[0],high[0],PerUpFromYearlyLow,PerDownFromYearlyHigh,highindays[260;0],lowindays[260;0] from table

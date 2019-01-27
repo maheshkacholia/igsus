@@ -1,0 +1,4 @@
+@COMMENT write comment here
+@RECORDSTOUSE=200=
+#x: ( ( close[0] - close[-20] ) / close[-20] ) * 100 
+select symbol,close,close[-20],x from table where x < -20

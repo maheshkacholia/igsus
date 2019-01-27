@@ -1,0 +1,5 @@
+@COMMENT Returns list of stocks for which volume spiked 
+@RECORDSTOUSE=20=
+#PercentageVolumeChange: ( volume[0] - MOV[volume;10;S;0] ) * 100 / MOV[volume;10;S;0]
+#BiweeklyAvgVolume:MOV[volume;10;S;0]
+select symbol,close[0],volume[0],BiweeklyAvgVolume,PercentageVolumeChange  from table  where PercentageVolumeChange > 0

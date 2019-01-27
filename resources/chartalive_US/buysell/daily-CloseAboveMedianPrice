@@ -1,0 +1,4 @@
+@COMMENT find those stocks where the close is above the median price over the past five days.shows those stocks that have the strongest bullish bias over all 5 days
+@RECORDSTOUSE=20=
+#MP:barsince{ close < ( high + low ) / 2 }
+select symbol,close[0],volume[0] from table  where  mp > 4   

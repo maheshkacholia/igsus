@@ -1,0 +1,9 @@
+@COMMENT GAPUP AFTER A BULLISH ENGULFING SIGNAL.  
+@COMMENT This shows a strong change in Investor Sentiment .This will show only long(buy) signal , occures rarely 
+@COMMENT Short Name GUBE is used on buy signal
+#G:GAPUP
+#BUL:BULLISHENGULFING
+IF ( G[0] AND  BUL[-1] )
+{
+    BUY{"GUBE"}
+}     

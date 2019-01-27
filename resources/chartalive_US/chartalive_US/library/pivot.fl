@@ -1,0 +1,14 @@
+PIVOTPOINT  := ( HIGH[0]  +  LOW[0]  +   CLOSE[0]  )  /   3
+P := PIVOTPOINT
+R1 :=    2  *  P  -  LOW[0] 
+S1 :=    2  *  P   -  HIGH[0] 
+R2  :=   ( P  - S1 )   +    R1 
+S2   :=   P  -   (  R2   -  S1 ) 
+expose{p}
+expose{r1}
+expose{r2}
+expose{s1}
+expose{s2}
+TRUE
+
+ 

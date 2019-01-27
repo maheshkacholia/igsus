@@ -1,0 +1,3 @@
+@Shows how many points the stock has gone in a 20 day (one month) period. This movement indicator is a nice way to determine whether a security is in a trend or a congestion area compared to other time periods
+#pointdiff:Highindays[20;0]  -  lowindays[20;0]
+select symbol,close[0],highindays[20;0],lowindays[20;0],pointdiff[0] from table

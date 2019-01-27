@@ -1,0 +1,2 @@
+X1 := ABS{ CLOSE[0]  -  OPEN[0]  } /  ( HIGH[0]  -  low[0] )
+X  :=  (  X1  <  0.1  )   

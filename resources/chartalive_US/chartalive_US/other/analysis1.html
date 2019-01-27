@@ -1,0 +1,62 @@
+<table width="100%" border="1" cellpadding="1" bordercolor="#e0dfe3" cellspacing="1" bgcolor="#ffff99">
+
+<tr valign="top">
+	<td bgcolor="#ECE5B6" width="20%"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>Indicator </b></font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6" width="20%"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>Value </b></font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6" width="60%"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana"><b>Explaination</b></font>
+		</font>
+	</td>
+</tr>
+
+<tr>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">Bi Weekly RSI(14 days)</font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=RSI[14;0]%
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=RSISTRING%
+	
+	</td>
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">MACDLINE(12,26) and MACDSIGNAL(9)</font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		Curr MACD=%=MACDLINE[12;26;9;0]% <br> Yesterday MACD=%=MACDLINE[12;26;9;-1]% <br>
+		Curr MACDSignal=%=MACDSIGNAL[12;26;9;0]% <br> Yesterday MACD=%=MACDSIGNAL[12;26;9;-1]%
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+			%=MACDSTRING%
+		</font>
+	</td>
+</tr>
+<tr valign="top">
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		<font face="Verdana">10 days MMA<br>40 days MMA</font>
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		MMA[10] %=MMA[10;0]%<br>MMA[40] %=MMA[40;0]%
+		</font>
+	</td>
+	<td bgcolor="#ECE5B6"><font size="2" color="#000000" face="Arial">
+		%=MMASTRING%
+		</font>
+	</td>
+</tr>	
+</table>
+

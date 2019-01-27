@@ -1,0 +1,69 @@
+@PARAMETER PERIOD1 PERIOD2 PERIOD3  
+@VALUE 7 14 28
+@COMMENT  Values range from 0 to 100 with 50 as the center line. Oversold territory exists below 30 and overbought territory extends from 70 to 100. 
+@COMMENT  Once a security becomes overbought or oversold, traders should wait for a signal that a price reversal has occurred. 
+@COMMENT One method might be to wait for the oscillator to cross above or below 50 for confirmation. Price reversal confirmation 
+@COMMENT can also be accomplished by using other indicators or aspects of technical analysis in conjunction with the Ultimate oscillator
+
+FUNCTION MYBP
+{
+
+	TLOW := 0
+	IF ( CLOSE[-1] < LOW[0] )
+	{
+	    TLOW := CLOSE[-1]
+	}
+	ELSE
+	{
+	    TLOW := LOW[0]
+	}
+
+	BP :=  CLOSE[0]  -  TLOW
+}
+FUNCTION MYTR
+{
+
+	A := HIGH[0] - LOW[0]
+	B := HIGH[0] - CLOSE[-1]
+	C :=  CLOSE[-1]  -  LOW[0] 
+
+	TR := A
+
+	IF ( B > TR )
+	{
+	    TR := B
+	}
+	IF ( C > TR )
+	{
+	    TR := C
+	}
+	TR
+}
+BPSUM3 := MOV[MYBP[0];$PERIOD3$;S;0]   *  $PERIOD3$
+  
+BPSUM2 := MOV[MYBP[0];$PERIOD2$;S;0]   *  $PERIOD2$
+BPSUM1 := MOV[MYBP[0];$PERIOD1$;S;0]   *  $PERIOD1$
+
+TRSUM1 := MOV[MYTR[0];$PERIOD1$;S;0]  * $PERIOD1$
+TRSUM2 := MOV[MYTR[0];$PERIOD2$;S;0]  * $PERIOD2$
+TRSUM3 := MOV[MYTR[0];$PERIOD3$;S;0]  * $PERIOD3$
+
+RAWUI := 4  *  ( BPSUM1  /  TRSUM1 )  +  2  *  ( BPSUM2  /  TRSUM2 )  +  ( BPSUM3  /  TRSUM3 )
+if ( barno == 30 )
+{
+
+     text{80,red,"OverBought Zone",5}
+     text{20,green,"OverSold Zone",5}
+
+}
+
+PLOT1{70,RED}
+PLOT2{30,GREEN}
+
+PLOTPRICEONRIGHT{30,GREEN}
+
+PLOTPRICEONRIGHT{70,RED}
+
+
+
+UO :=  ( RAWUI / ( 4  +  2  +  1 )  )  *  100

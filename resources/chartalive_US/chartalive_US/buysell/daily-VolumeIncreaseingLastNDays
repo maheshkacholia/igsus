@@ -1,0 +1,4 @@
+@COMMENT Returns No of days stock 's today's voume is greater than yesterday's volume 
+@RECORDSTOUSE=20=
+#NoofDaysVolumeIsUp:barsince{volume[0]  <  volume[-1] }
+select symbol,close[0],volume[0],NoofDaysVolumeIsUp from table  

@@ -1,0 +1,1 @@
+select symbol,close[0],high[0],highindays[20;0]  from table where high[0] >= highindays[20;0]

@@ -1,0 +1,39 @@
+@COMMENT set of eight very probable levels for intraday support(S) and resistance(R) values 
+@RECORDSTOUSE=2=
+function mycamrion
+{
+
+H  := HIGH[0]
+L  :=  LOW[0]
+C  := CLOSE[0]
+R4 := ( H  -  L )  *  1.1 / 2 + C 
+
+R3 :=  ( H  -  L ) * 1.1 / 4 + C 
+
+R2 :=  ( H  -  L ) * 1.1 / 6 + C 
+
+R1 :=  ( H  - L ) * 1.1 / 12 + C 
+
+S1 := C - ( H  - L ) * 1.1 / 12 
+
+S2 := C - ( H - L ) * 1.1 / 6 
+
+S3 := C - ( H - L ) * 1.1 / 4 
+
+S4 := C - ( H  - L ) * 1.1 / 2  
+
+expose{r4}
+expose{r3}
+expose{r2}
+expose{r1}
+expose{s1}
+expose{s2}
+expose{s3}
+expose{s4}
+
+TRUE 
+
+
+}
+
+select symbol,close[0],r4,r3,r2,r1,s4,s3,s2,s1 from table where mycamrion

@@ -1,0 +1,4 @@
+@COMMENT Returns No of days stock 's closing price is greater than opening price 
+@RECORDSTOUSE=20=
+#NoofDaysStockIsInGreen:barsince{close[0]  <  open[0] }
+select symbol,close[0],volume[0],NoofDaysStockIsInGreen from table  

@@ -1,0 +1,1 @@
+select symbol,p,s1,s2,r1,r2 from table where woodiepivotpoint

@@ -1,0 +1,5 @@
+@COMMENT A Full Gap Up occurs when the opening price is greater than yesterday's high price.A bullish signal 
+@COMMENT For Intraday Long -- On 1-minute chart after 10:30 am and set a long (buy) stop two ticks above the high achieved in the first hour of trading.
+@COMMENT 
+@RECORDSTOUSE=5=
+select symbol,open[0],low[0],low[-1],high[-1] from table where low[0] > high[-1]  

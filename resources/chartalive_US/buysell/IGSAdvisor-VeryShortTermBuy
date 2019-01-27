@@ -1,0 +1,28 @@
+@COMMENT This will provide list of shares which are very bullish ( price up and volume spiked
+@COMMENT This will list all stocks which came in this category from last 3 days
+@RECORDSTOUSE=20=
+function shortterm
+{
+#x:mov[volume;2;s;0]  >   1.5  * mov[volume;10;s;-3]  and close > close[-1]  *  1.03
+
+   occure := 0
+   ret := false
+   if ( x[0] )
+   {
+       occure := "Today"
+       ret := true
+   }
+   else if ( x[-1] )
+   {
+       occure := "1 day before"
+   	ret := true
+   }
+   else if ( x[-2] )
+   {
+       occure := "2 Day before "
+   	ret := true
+   }
+   expose{occure}
+   ret 	
+}
+select symbol,occure from table   where shortterm

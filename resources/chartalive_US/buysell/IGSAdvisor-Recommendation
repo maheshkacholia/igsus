@@ -1,0 +1,146 @@
+function  buyselladv
+{
+#x:( mov[volume;2;s;0]  -  mov[volume;10;s;-3]  ) * 100 /  mov[volume;30;s;0]  
+#y:( mov[close;2;s;0]  -  mov[close;10;s;-3]  ) * 100 /  mov[close;10;s;0]
+#z:mov[mma[15;0];s;0]  -  mov[mma[40;0];s;0]  
+bullishpoint := 0
+
+if ( y > 0 and y < 5 )
+{
+	bullishpoint  :=  bullishpoint + 1
+}
+else if (  y > 5 and y < 10 )
+{
+	bullishpoint  :=  bullishpoint + 2
+}
+else if ( y  >  10 )
+{
+	bullishpoint  :=  bullishpoint + 3
+}
+
+
+if ( y > 0 and x > 50 and x < 100 )
+{
+	bullishpoint  :=  bullishpoint + 1
+}
+else if (   y > 0 and  x > 100  )
+{
+	bullishpoint  :=  bullishpoint + 2
+}
+
+if ( y < 0  and  y > -5 )
+{
+	bullishpoint  :=  bullishpoint - 1 
+}
+else if (  y < -5 and y  > -10 )
+{
+	bullishpoint  :=  bullishpoint - 2
+}
+else if (  y < -10 )
+{
+	bullishpoint  :=  bullishpoint - 3
+}
+
+
+if ( y < 0 and x > 50 and x < 100 )
+{
+	bullishpoint  :=  bullishpoint - 1
+}
+else if ( y  <  0 and  x > 100  )
+{
+	bullishpoint  :=  bullishpoint - 2
+}
+
+if ( bullishpoint  >= 3 )
+{
+    color := "green#Strongbuy"   
+}
+else if ( bullishpoint  >= 0 and   bullishpoint < 3 )
+{
+    color := "blue#buy"  
+}
+else if ( bullishpoint  < 0 and bullishpoint > -3 ) 
+{
+    color := "pink#sell" 
+}
+else if ( bullishpoint <= -3 )
+{
+
+    color := "red#strongsell" 
+}
+expose{color}
+expose{bullishpoint}
+true
+}
+
+function  myperatio
+{
+	pe := close[0] / ( basiceps[0;0] + basiceps[1;0] + basiceps[2;0] + basiceps[3;0] )
+	
+	buysellcounter := 0
+
+	if ( pe < 0 )
+	{
+		pe := "SELL#" + pe	
+        	buysellcounter := buysellcounter - 2 
+
+
+	}
+	else if ( pe > 0 and pe < 20 )
+	{
+		buysellcounter := buysellcounter +  2 
+		pe := "BUY#" + pe	
+	
+	}
+	else 
+	{
+	        buysellcounter := buysellcounter + 1 
+		pe := "SELL#" + pe	
+	
+	}
+        
+        earninggrowth  :=  ( NETPROFIT[0;0] - NETPROFIT[4;0] ) * 100 / NETPROFIT[4;0]
+        if ( earninggrowth > 0 )
+        {
+            
+            earninggrowth := "BUY#" + earninggrowth
+	        buysellcounter := buysellcounter + 1 
+
+        }
+        else
+        {
+            earninggrowth := "SELL#" + earninggrowth
+	        buysellcounter := buysellcounter - 1 
+
+        }
+        
+        TotNETSALES := NETSALES[0;0]  + NETSALES[1;0]  +  NETSALES[2;0]  + NETSALES[3;0]
+        if (  TotNETSALES == 0 )
+        {
+        	TotNETSALES := TOTALINCOME[0;0] + TOTALINCOME[0;1] + TOTALINCOME[0;2] + TOTALINCOME[0;3]
+        }
+        
+        totalnetprofit := NETPROFIT[0;0] + NETPROFIT[1;0] + NETPROFIT[2;0] + NETPROFIT[3;0]
+        profitmargin :=   (  totalnetprofit *  100 ) / TotNETSALES
+        
+        if (  profitmargin < 10 )
+        {
+        	profitmargin := "SELL#" + profitmargin
+                buysellcounter := buysellcounter - 1 
+
+        }
+        else
+        {
+         	profitmargin := "BUY#" + profitmargin
+	        buysellcounter := buysellcounter + 1 
+        
+        }
+        
+        expose{profitmargin}
+        expose{earninggrowth}
+       
+       
+        true 
+}
+@RECORDSTOUSE=50=
+select symbol,bullishpoint,color from table where buyselladv

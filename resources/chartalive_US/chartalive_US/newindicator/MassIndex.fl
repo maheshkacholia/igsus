@@ -1,0 +1,29 @@
+@PARAMETER DAYPERIOD  PERIOD2
+@VALUE 9 25
+@COMMENT The mass index serves for finding turns in trends. It is based on changes between maximum and minimum prices. 
+@COMMENT If the amplitude gets wider, the mass index grows; if it gets narrower, the index gets smaller. 
+@COMMENT the most important mass index signal is a special model formed by the indicator. It is called "reversal bulge". It is formed when a 25-period mass index first rises above 27 and then falls below 26,5. 
+@COMMENT In this case a turn of prices can take place, independently of the general trend (the prices may move up or down or fluctuate within a trade corridor).
+@COMMENT To find out which signal for purchase or for sale the reverse bulge gives, people often use 9-period exponential moving average of prices. 
+@COMMENT When a reverse bulge appears, you should buy if the moving average falls (in hope of a turn) and sell if it grows.
+
+function sum
+{
+#c:HIGH - LOW
+    function bdown
+    {
+#a:HIGH - LOW
+         b := mov[mov[a;$DAYPERIOD$;E;0];$DAYPERIOD$;E;0]
+    }
+    x := 0
+    if ( bdown > 0 )
+   {
+        x := mov[c;$DAYPERIOD$;E;0]  / bdown
+   }
+   x
+}
+plot1{27,red}
+
+plot2{25,green}
+
+MOV[sum;$PERIOD2$;S;0] *  $PERIOD2$ 

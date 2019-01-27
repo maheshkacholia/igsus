@@ -1,0 +1,14 @@
+X := LOW[0] > HIGH[-1]
+IF ( X )
+{
+     BUY{}
+      buytype := "strongbuy"
+
+}
+Y := HIGH[0] < LOW[-1]
+IF ( Y )
+{
+    SELL{}
+ buytype := "strongsell"
+
+} 

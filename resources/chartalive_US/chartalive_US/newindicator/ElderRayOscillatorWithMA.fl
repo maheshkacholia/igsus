@@ -1,0 +1,21 @@
+@PARAMETER period1 period2  
+@VALUE 14  3
+@COMMENT This OSCILLATOR  COMBINES BOTH BULL,BEAR POWER AND PLOTS IT AS A MOVING AVERAGE.
+
+#ECURRENT:HIGH[0]  + LOW[0]  -  2  *  EMA[$period1$;0]
+A := ECURRENT[0]
+c :=  SMAANY[ECURRENT[0];$period2$;0]
+if ( barno < $period1$ )
+{
+    c := 0
+}
+
+IF ( C > 0 )
+{ 
+     LINE{0,C ,GREEN}
+}
+ELSE
+{
+        LINE{0,C ,RED}
+}
+c

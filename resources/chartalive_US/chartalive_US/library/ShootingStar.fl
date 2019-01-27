@@ -1,0 +1,17 @@
+O1 := OPEN[-1]
+O2 := OPEN[-2]
+H1 := HIGH[-1]
+H2 := HIGH[-2]
+L1 := LOW[-1]
+L2 := LOW[-1]
+C1 := CLOSE[-1]
+C2 := CLOSE[-2]
+O  := OPEN[0]
+C  := CLOSE[0]
+H  := HIGH[0]
+L  := LOW[0]
+X3 :=  (  (  H  -  L  ) >  4  *  (  O  -  C  )  )
+X1 := (  (  H  -  C  )  /  ( 0.001 +  H  -  L  )  >=  0.75  )
+X2 := (  (  H  -  O  )  /  (  0.001 +  H  -  L  )  >=  0.75  )
+x := (  X3  AND   X1  AND  X2  )  
+ 

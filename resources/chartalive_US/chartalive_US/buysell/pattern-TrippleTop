@@ -1,0 +1,4 @@
+@COMMENT Will provide stocks for which tripple top pattern is occuring 
+@FORMULANAME=BuySellTrippleTop=
+@RECORDSTOUSE=200=
+select symbol,close from table where BuySellTrippleTop  == true

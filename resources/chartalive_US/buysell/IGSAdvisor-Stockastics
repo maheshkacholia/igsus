@@ -1,0 +1,5 @@
+@COMMENT Will provide buy/sell signal based on stockastics 
+@COMMENT very good short term indicator
+@FORMULANAME=stockasticsanalysis=
+@RECORDSTOUSE=100=
+select symbol,buytype from table where stockasticsanalysis

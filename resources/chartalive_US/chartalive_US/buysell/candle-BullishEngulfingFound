@@ -1,0 +1,6 @@
+@COMMENT 2 day pattern to shows buyser are in control of stock ( widely used )
+@COMMENT First day is a narrow range candle that closes down for the day(Seller Control with low volatility). 
+@COMMENT The second day is a wide candle that engulfs the body of the first candle and closes near the top of the range. 
+@COMMENT The buyers have overwhelmed the sellers (demand is greater than supply). Buyers are ready to take control of this stock!
+@RECORDSTOUSE=5=
+select symbol,close[0]  from table where BULLISHENGULFING == true

@@ -1,0 +1,199 @@
+name|topname|syntax|description|example
+Var|Variable |Var{ &lt;expr&gt; } | This function can be used to create array in igs fl. <br>First the expression is calculated and the expression is created as a variable in system. <br>You should use this function to create array in system. | Lets say need to create an array like A.1.. A.5. to do so write code like this<br>A := 1 <br> While ( a < 6 ) <br>{ <br>    var{ "A." + A } := 0 <br>    A := A + 1<br>}
+
+Echo|Echo|Echo{&lt;expr&gt;}|This function can be used to populate array dynamically in a program. |Lets say you have array A.1 .. A.5 and would like to sum its value and display then the code would be like this<br>B := 1<br>Sum := 0<br>While ( B < 6 )<br>{<br>  sum := sum + echo{ "A." + B} }<br>print{sum}    
+
+Comments|Comment a Line | @ any chars|To comment a line just add @ before line.|@this is comment
+
+Include |Include a Custom Indicator | # var : &lt;expr&gt;|Include statement should be added at start of a formula and can be used as an indicator later on in the function. | Suppose you would like to get Highest price of close in last 10 days then you need to use include to this functionality like this <br>#highclose : close[0]<br>print { highindaysany[highclose[0];10;0]}<br>this will first create a custom array called higclose which is basically having todays close value. Now highindaysany indicator will use it as an input and will return highest price of close in last 10 days
+
+Buy|Draw Buy Arrow | Buy{&lt;expr&gt;} | Will show buy arrow with text | buy{close[0]} <br> It will show buy arrow with close price displayed
+
+Sell|Draw Sell Arrow | Sell{&lt;expr&gt;} <br> Will show sell arrow with text | sell{close[0]} <br> It will show buy arrow with close price displayed
+
+Alert|Show Alert window | Alert{&lt;expr&gt;} | This Will popup a window with text msg if condition is met at end or on click
+
+Abs|Absolute Value of Expression |Abs{&lt;expr&gt;} |It will return positive value of expression | abs{-5} <br> It will return 5.
+
+Invert|Invert boolean result | Invert{Boolean &lt;expr&gt;} | This Will invert the boolean result . If true then will return false or false then return true | invert{true} <br> This will return false
+
+Percent|Percentage Value |Percent{float para}|Will multiple para by 100 and return it|percent{1}<br> This will return 100.
+
+
+Oneof|Oneof|Oneof{string partstr,string fullstr} |Checks if partstr is existing in fullstr. And return true, false. | oneof{"a","ab"} <br> It will return true as a is part of ab
+
+Print|Print Value | Print{&lt;expr&gt;} |Will evaluate expression and print it on outputwindow | Print{close[0]}<br> This will print closing value on console window.
+
+Println|Print Value in new line| Println{&lt;expr&gt;} |This will evaluate expression and print it on outputwindow in a new line| Println{close[0]}<br> This will print closing value on console window in next line.
+
+Pow|Evaluate Power of base value| Pow{float val1,float val2}|This will return power of value2 for base val1| pow{2,3} <br>It will return 2 power 3 which is 8.
+
+Plot|Plot Expr on Graph|Plot1{float &lt;expr&gt;,color color} Plot2{float &lt;expr&gt;,color color} Plot3{float expr>,color color} | It Will plot graph on the displayed chart. The way it works is it draw a line between last calculate value and current calulated value for plot with specified color | plot1{high[0],red} <br> This will plot a line connecting high value of the bar and will draw a line in red color.
+
+Circle|Circle|Circle{expr ,color,text,size} |This will plot circle at expr value in specified color with text and in specified size | circle{close[0],red,hello,5}<br> This will draw a circle in red color with size of 5 with text hello.
+
+Rectangle|Rectangle|Rectangle{ expr,color,text,size }|This will plot rectangle at expr value in specified color with text and in specified size | Rectangle{close[0],red,hello,5}<br> This will draw a Rectangle in red color with size of 5 with text hello.
+
+Text|Text|Text{ expr,color,text,size }|Will plot text at expr value in specified color|text{close[0],red,hello,5}<br> This will draw a text in red color with size of 5 with text hello.
+
+
+Intvalue|Integer Value | Intvalue{float expr} | Will return integer value of expr .| intvalue{5.25} <br> This will return 5
+
+Barlength|BAR LENGTH|BARLENGTH |Will return length of the bar which is basically ( high  low ) | println{barlength}<br>This will print length of each bar on console window.
+
+BearishEngulfing|Bearish Engulfing|BearishEngulfing |Will return true if <i>Bearish Engulfing</i> pattern found. | if ( BearishEngulfing ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Bearish Engulfing</i> pattern found.
+
+BearishEveningDojiStar|Bearish Evening Doji Star|BearishEveningDojiStar |Will return true if <i>Bearish Evening Doji Star</i> pattern found. | if ( BearishEngulfing ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Bearish Evening Doji Star</i> pattern found.
+
+BearishHarami|Bearish Harami|BearishHarami |Will return true if <i>Bearish Harami</i> pattern found. | if ( BearishHarami ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Bearish Harami</i> pattern found.
+
+BullishEngulfing|Bullish Engulfing|BullishEngulfing |Will return true if <i>Bullish Engulfing</i> pattern found. | if ( BullishEngulfing ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Bullish Engulfing</i> pattern found.
+
+BullishHarami|BullishHarami|BullishHarami |Will return true if BullishHarami pattern found. | if ( BullishHarami ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Bullish Harami</i> pattern found.
+
+
+BullishMorningDojiStar|Bullish Morning Doji Star|BullishMorningDojiStar |Will return true if <i>Bullish Morning Doji Star</i> pattern found. | if ( BullishMorningDojiStar ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Bullish Morning Doji Star</i> pattern found.
+
+Candlelength|Candle length|Candlelength|Will return langth of candle which is basically abs{open  low}| print{Candlelength}
+
+DarkCloudCover|Dark Cloud Cover|DarkCloudCover |Will return true if <i>Dark Cloud Cover</i> pattern found. | if ( DarkCloudCover ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Dark Cloud Cover</i> pattern found.
+
+DOJI|DOJI|doji|Will return true if <i>DOJI</i> pattern found. | if ( DOJI ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>DOJI</i> pattern found.
+
+Greencandle|Green Candle|Greencandle|Will return true if close &gt; open|if ( Green	candle ) <br> { alert{"it is a green candle"}<br>}<br> This will open a alert window if last bar is a green bar or whenever you click on mouse and that bar is a green bar.
+
+Hammer|Hammer|Hammer|Will return true if <i>Hammer</i> found |if ( Hammer ) <br> { alert{"Hammer pattern found"}<br>}<br> This will open a alert window if last bar is a Hammer or whenever you click on mouse and that bar is a Hammer.
+
+Hangingman|Hanging man|Hangingman|Will return true if <i>Hanging man</i> found |if ( Hangingman ) <br> { alert{"Hanging man pattern found"}<br>}<br> This will open a alert window if last bar is a Hangingman or whenever you click on mouse and that bar is a Hangingman.
+
+InvertedHammer|Inverted Hammer|InvertedHammer|Will return true if <i>Inverted Hammer</i> found |if ( InvertedHammer ) <br> { alert{"Inverted Hammer pattern found"}<br>}<br> This will open a alert window if last bar is a Inverted Hammer or whenever you click on mouse and that bar is a Inverted Hammer.
+
+PiercingLine|Piercing Line|PiercingLine|Will return true if <i>Piercing Line</i> found |if ( PiercingLine ) <br> { alert{"Piercing Line pattern found"}<br>}<br> This will open a alert window if last bar is a Piercing Line or whenever you click on mouse and that bar is a PiercingLine.
+
+Redcandle|Red candle|Redcandle|Will return true if close &lt; open|if ( Redcandle ) <br> { alert{"it is a red candle"}<br>}<br> This will open a alert window if last bar is a red bar or whenever you click on mouse and that bar is a red bar.
+
+Shootingstar|Shooting star|Shootingstar |Will return true if <i>Shooting star</i> pattern found. | if ( Shootingstar ) <br> { <br> buy{} <br> } <br> This will draw a buy arrow whenever a <i>Shooting star</i> pattern found.
+
+SMA|Simple Moving Average|SMA[noofdays;daybefore]|This will calculate simple moving average of noofdays for daysbefore ( for today it is zero )| Get SMA of 14 days for today <br>SMA[14;0]
+EMA|Expontial Moving Average|EMA[noofdays;daybefore]|This will calculate <i>Expontial Moving Average</i> for specified noofdays |Find out Expontial Moving Average of 20 days for yesterday<br>EMA[20;-1]
+WMA|Weightage Moving Average|WMA[noofdays;daybefore]This will calculate <i>Weightage Moving Average</i>|Calculate WMA of 10 days for 3 days before today<br> EMA[20;-3]
+
+MMA|Mahesh Moving Average|MMA[noofdays;daysbefore]|This is our own developed formula to include volume and price in single formula . very useful if you consider volume also with price. This indicator will try to find out average price of a security using volume in the formula. | MMA[14;0] <br>This will return 14 days Mahesh moving average
+
+SMAANY|Simple Moving Average for Any Indicator|SMAANY[&lt;defined indicator&gt;;noofdays;daysbefore]|Use this indicator if you want to get Simple Moving average of any defined indicator | if you want to get Simple Moving Average of High Value then use formula <br> SMAANY[high[0];14;0]
+
+EMAANY|Expontial Moving Average for Any Indicator|EMAANY[&lt;defined indicator&gt;;noofdays;daysbefore]|Use this indicator if you want to get Expontial Moving average of any defined indicator | if you want to get Expontial Moving Average of High Value then use formula <br> EMAANY[high[0];14;0]
+
+WMAANY|Weightage Moving Average for Any Indicator|WMAANY[&lt;defined indicator&gt;;noofdays;daysbefore]|Use this indicator if you want to get Weightage Moving average of any defined indicator | if you want to get Weightage Moving Average of High Value then use formula <br> WMAANY[high[0];14;0]
+
+Close|Closing Price|Close[daysbefore]|Closing price |get today's closing price  <br>close[0]
+Open|Opening Price|Open[daysbefore]|Opening price |get today's opening price  <br>open[0]
+High|High Price|High[daysbefore]|High price |get today's high price  <br>high[0]
+Low|Low Price|Low[daysbefore]|Low price |get today's Low price  <br>Low[0]
+Volume|Volume|Volume[daysbefore]|Volume |get today's Volume  <br>Volume[0]
+Volume|Volume[daysbefore]
+RSI|Relative Strength Index|RSI[noofdays;daysbefore]|Will return RSI value for noofdays specified for daysbefore|To get todays RSI for 14 days<br>RSI[14;0]
+WILPER|Willam %R|WILPER[noofdays;daysbefore]|Will calculate Willam %R value for specified no of days|WILPER[14;0]
+MACDSignal|MACD SIGNAL Value|MACDSIGNAL[shortperiod;longperiod;signalperiod;daysbefore]|This will return MACD signal value. |Suppose you would like to get macd signal value where short period 12, long period 26, signal line is 9 days the formula would be Macdsignal[12;26;9;0]
+MACDLINE |MACD Line Value|MACDLINE[shortperiod;longperiod;signalperiod;daysbefore]|This will return MACD  value. |Suppose you would like to get macd value where short period 12, long period 26, signal line is 9 days the formula would be Macdline[12;26;9;0]
+MACDSIGNALANY|MACDSIGNALANY|MACDSIGNALANY[definedindicator;shortperiod;longperiod;signalperiod;daysbefore]|In normal MACDSignal function the calculation is done using closing value but if instead of closing value you would like to go with any other value then use this indicator .|Suppose you would like to get macdsignal value for period 12,26,9 using high value the formula will be Macdsignalany[high[0];12;26;9;0]
+
+MACDLineANY|MACDLineANY[definedindicator;shortperiod;longperiod;signalperiod;daysbefore]|In normal MACDLine function the calculation is done using closing value but if instead of closing value you would like to go with any other value then use this indicator .|Suppose you would like to get macd value for period 12,26,9 using Simple moving average of 14 days the formula will be<br><br> Macdsignalany[sma[14;0];12;26;9;0]
+Macddiv|Macddiv[shortperiod;longperiod;signalperiod;daysbefore]<br>This will return difference between MACD and MACD Signal , which is also called as MACD Histograph. Suppose you would like to get macd histogram value where short period 12, long period 26, signal line is 9 days the formula would be Macddiv[12;26;9;0]
+MACDDivANY|MACDDivANY[definedindicator;shortperiod;longperiod;signalperiod;daysbefore]|In normal MACDDiv function the calculation is done using closing value but if instead of closing value you would like to go with any other value then use this indicator .|Suppose you would like to get macd histogram for period 12,26,9 using Simple moving average of 14 days the formula will be <br><br>Macddivany[sma[14;0];12;26;9;0]
+
+Ubband|Upper Bollinger Band|Ubband[noofdays;standarddeviation;daysbefore]|To find out upper band of bollinger band using noofdays and standard deviation use this formula.| Suppose you need to get value of upper band of bollinger for 20 days using 2 standard deviation the formula will be <br><br>Ubband[20;2]
+
+Lbband|Lower Bollinger Band|Lbband[noofdays;standarddeviation;daysbefore]|To find out lower band of bollinger band using noofdays and provided standard deviation use this formula.| Suppose you need to get value of lower band of bollinger for 20 days using 2 standard deviation the formula will be <br><br>Lbband[20;2]
+UBBANDANY|Upper Band for any indicator|UbbandAny[indicator;noofdays;standarddeviation;daysbefore]|To find out upper band of bollinger band for any defined indicator using noofdays and standard deviation use this formula.| Suppose you need to get value of upper band of bollinger for 20 days using 2 standard deviation for high value the formula will be <br><br>Ubbandany[high[0];20;2]
+
+LBbandAny|LowerBollinger band for any indicator|Lbband[definedindicator;noofdays;standarddeviation;daysebfore]|To find out lower band of bollinger band using noofdays and provided standard deviation for any defined indicator use this formula. |Suppose you need to get value of lower band of bollinger for 20 days using 2 standard deviation for lower value the formula will be Lbbandany[low[0];20;2]
+Highindays|Highest Value in n days |Highindays[noofdays;daysbefore]|Will return highest value in n days|To get highest value in last 5 days use <br><br>Highindays[5;0]
+
+Highindaysany|Highest Value for any indicator in n days|Highindaysany[indicator;noofdays;daysbefore]|To get highest value of close in last 5 days use formula <br><br>Highindaysany[close[0];5;0]
+
+Lowindays|Lowest Value for  in n days|Lowindays[noofdays;daysbefore]|To get lowest value in last 5 days use<br><br>Lowindays[5;0]
+
+Lowsindaysany|Lowest Value for Any Indicator in n days|Lowsindaysany[close[0];daysbefore]|To get lowest value of close in last 5 days use formula<br><br>Lowindaysany[close[0];5;0]
+CCI|Commedity Channel Index|Cci[noofdays;daysbefore]| will calculate <i>Commedity Channel Index</i> value for noofdays|cci[14;0] 
+CMF|Chankline Money Flow|CMF[noofdays;daysbefore]|Will calculate <i>Chankline Money Flow</i> |cmf[14;0]
+AROOPUP|AROOP UP Oscillator|AROOPUP[noofdays;daysbefore]|will calculate Aroop Up oscillator Indicator|AROOPUP[14;0]
+Aroopdown|AROOP DOWN Oscillator|AROOPDOWN[noofdays;daysbefore]|will calculate Aroop Down Oscillator Indicator|AROOPDOWN[14;0]
+AROOPOSI|Aroop Oscillator|AROOPOSI[noofdays;daysbefore]| Will calculate Aroop Oscillator|AROOPOSI[14;0]
+AVGTRUERANGE|Average True Range|AVGTRUERANGE[noofdays;daysbefore]|will calculate <i>Average True Range</i> indicator|AVGTRUERANGE[14;0] 
+
+WILLAMACCIS|Willam Accumulation Distribution|WILLAMACCIS[daysbefore]|Will return Willam Accumulation Disribution value . It is calcuted using each day value.| WILLAMACCIS[0] <br><br>Will return todays willam accumulation distribution value
+ACCDIS|Accumulation Distribution Graph|ACCDIS[daysbefore]|Will return  accumulation disribution value . it is calcuted using each day value.| Example is ACCDIS[0] will return todays  accumulation distribution value
+DPO|Detrended Price Oscillator|DPO[noofdays;daysbefore]|Will calculate Detrended Price Oscillator|dpo[14;0] <br> will calculate 14 days dpo for today
+VOLOSC|Volume Oscillator|VOLOSC[shortperiod;longperiod;daysbefore]|It will create volume oscillator.|To create volume oscillator for 12 and 26 days. Use indicator<br><br>VOLOSC[12;26;0]
+ONBALVOLUME|On Balance Volume|ONBALVOLUME[daysbefore]|It will calculate On Balance Volume|ONBALVOLUME[-5] <br> Will return On Balance Volume for 5 days before today.
+EASEOFMOVEMENT|EASE OF MOVEMENT|EASEOFMOVEMENT[noofdays;daysbefore]|Will calculate <i>Ease of Movement</i> Indicator|EASEOFMOVEMENT[14;0]
+CHKOSC|Chanklin OSCillator|CHKOSC[daysbefore]|Will calculate <i>Chanklin OSCillator </i> indicator|CHKOSC[0] <br> this will return value of Chanklin OSCillator for today
+STOKPERK|Stostics %K|STOKPERK[%Kperiod;%dperiod;daysbefore]|Will calculate <i>Stostics %K</i> indicator|STOKPERK[14;2;0]
+STOKPERD|Stostics %D|STOKPERD[%Kperiod;%dperiod;daysbefore]|Will calculate <i>Stostics %D</i> indicator|STOKPERD[14;2;0]
+name|topname|syntax|description|example
+
+plotpriceonleft|Plot Price On Left|plotpriceonleft{value,text,color}|This function is used to display price on mouse move on left top of the graph .Suppose you are writing a custmized indicator with overlay of another indicator and want to display price on that indicator on mouse move or click then you can use this function in your formula and can display price on left top corner of the graph|plotpriceonleft{rsi[14;0],"rsi",red}
+
+plotpriceonright|Plot Price on right|This function will show value at right side of the graph using the color mentioned in function|plotpriceonright{rsi[14;0],red} 
+
+addtoglobal|addtoglobal|addtoglobal{varname,value}|This function will add variable to global variable list so that it can be used any where. This function is applicable only for single stock and directly should not be used for stock screening. |addtoglobal{a,5}<br>This will add variable a with value 5 as globalvariable.
+
+expose|expose|expose{variable}|This will expose variable so that it can be used outside of function or library call. This function is very useful in sql where you make a call to a function and then you would like to show multiple varible in sql result. For example if you would like to display pivot point and major resistance then you need multiple output field from a function|This example will show how expose function can be very useful.In this example we will  show how to display pivot points in sql<br> First create formula and expose variable <br>  PIVOTPOINT  := ( HIGH[0]  +  LOW[0]  +   CLOSE[0]  )  /   3<br>P := PIVOTPOINT<br>R1 :=    2  *  P  -  LOW[0] <br>S1 :=    2  *  P   -  HIGH[0] <br>R2  :=   ( P  - S1 )   +    R1 <br>S2   :=   P  -   (  R2   -  S1 )<br>expose{p}<br>expose{r1}<br>expose{r2}<br>expose{s1}<br>expose{s2}<br>TRUE<br><br>Now save this formula in formula directory and then <br>create a sql and use this formula like this <br>select symbol,p,r1,r2,s1,s2 where pivot<br> this sql will show pivot points , resistant and support.
+
+getvalue|getvalue|getvalue{expr,position}|This function can be used to evaluate an expression for a particular position.This function is very useful when you are writing any custmized indicator. This function is also can be used only while you are using it for a single stock and directly should not use it in stock scanner and sql query.|In this example we will calculate average volume of stock using getvalue , loop and noofbars variable <br><br>if ( barno == 0 )<br>{ <br>   i := 0   <br>  totvolume := 0<br>while ( i &lt; noofbars )<br>{ <br>   vol := getvalue{volume[0],i}<br>	totvolume := totvolume + vol <br>    } <br>    avgvolume :=  avgvolume / i <br>    print{ " avg volume is " + avgvolume} <br>}
+
+updatevar|update variable|updatevar{var,expr,position}|This function should be used to update any variable for old calculated variable . Suppose you have written a formula for stock and you would like to change value of previously calculated variable then you should use this function| a := close[0] <br>updatevar{a,0,barno - 1}<br> Initially we assigned value close[0] to a and then when formula is executed on nextbar it update value of variable a for previous bar.
+
+ceiling|ceiling|ceiling{expr}|Will return ceiling value of expression|ceiling{5.65}<br> This will return 5
+
+round|round|round{expr}|This will round the expr value to nearest integer|round{1.1}<br>This will return 1 
+
+log|log|log{expr}|This will return log value | log{2} <br> This will return log value of 2
+
+floor|floor|floor{expr}|will return floor value of expression | floor{5.7} <br> This will return 5
+
+barsince|barsince|barsince{expr}|This will start calculating expr from current bar and calculate till expression returns true and return noofdays it took to get true expression|In this example we will calculate noofdays the stocks is in green <br> if ( barno == noofbars - 1 )<br>{    <br>a := barsince{close[0] &lt; open[0] }    <br>print{a}<br>}
+
+sumbars|sumbars|sumbars{expr,noofbars,direction}|This will sum expression for noofbars starting from current bar. The direction can be a-ahead or b-backward|In this example we will count average volume of the security <br>if ( barno == 0 )<br>{<br>     x := sumbars{volume[0],noofbars,a}<br>     avgvolume := volume[0] / noofbars<br>    println{avgvolume}<br> }
+
+max|max|max{x,y}|Will return maximum value between x,y| print{max{5,6}} <br> will return 6
+
+min|min|min{x,y}|Will return minimum value between x,y| print{min{5,6}} <br> will return 5
+
+sumcondmeet|sum of condition meet|sumcondmeet{expr,noofcount,direction}|This will start from current position and calculate expression for count . If any expression is true then it will add it and at end will return sum of all expression which were macthed. | if ( barno == noofbars - 1 )<br>In this example we will calculate how many redcandle stock created in last 5 days. Means how many time stock went in red ( close is less than open)<br>{<br>    i := sumcondmeet{close[0] < open[0], 5,b} <br>   println{i}<br>}
+
+dayofweek|dayofweek|dayofweek{expr}|This will return dayofweek. sunday is one and saturday is seven.The format of date must be in yyyy-mm-dd.|dayofweek{date[0]}<br> this will return integer value of day for current date
+
+dayofmonth|dayofmonth|dayofmonth{expr}|This will return dayofmonth, the first day of month will return 1. Date must be in yyyy-mm-dd format | dayofmonth{"2009-8-17"} <br> This will return 17.
+
+barno|barno|barno|This is global variable which returns the barno on which formula is running currently. The firstbar is zero. It is very useful when you want to initialize some variable before start doing processing or want to do processing only for last bar or first bar|In this example we will use barno variable and will do  initialization of some variable<br>if ( barno == 0 ) <br>{avgvolume :=  100000<br>   avgprice  :=  close[0]<br>   addtoglobal{avgprice}<br>   }
+noofbars|noofbars|noofbars|This is global variable which returns the total noofbars . It is very useful when you want to initialize some variable before start doing processing or want to do processing only for last bar or first bar|In this example we will use noofbars variable <br>if ( barno == 0 ) <br>{ <br>println{noofbars}<br>  }
+
+cmo|Chande momentum oscillator (CMO)|cmo[noofdays;daysbefore]|This will return value of Chande momentum oscillator |cmo[14;0] <br> This will return value of CMO using 14 days for today
+dema|Double Exponential Moving Average|dema[noofdays;daysbefore]|DEMA is basically (2 * n-day EMA) - (n-day EMA of EMA) | dema[14;0] <br> will return value of dema indicator for 14 days for today.
+BOP|Balance Of Power (BOP)|BOP[daysbefore]|BOP is basically ratio of difference between open and close and high and low, which is basically close - open / high - low|      
+adx|adx|adx[noofdays;daysbefore]|This will return value of adx indicator|adx[14;0]
+pdi|positive dx|pdi[noofdays;daysbefore]|will return value of positive dx|pdi[14;0]
+mdi|minus dx|mdi[noofdays;daysbefore]will return value of negative dx|mdi[14;0]
+mov|moving avergaes|mov[dataarray;noofdays;type;daysbefore]|this will return moving average of specified dataarray.<br> You can calculate Simple(S),Expontial(E) or weighted(E) moving average by specifying S,E or W in type field.|To get simple moving average of high value for 14 days  mov[high;14;s;0]<br>to get expontial moving average of close for 20 days mov[close;20;e;0]<br> to get weighted moving average of rsi 14 for 10 days mov[rsi[14;0];10;0]
+cross|cross|cross[dataarray1;dataarray2;daysbefore]|this will compare today and yesterday' value of dataarray1 to dataarray2. If today's value of dataarray1 is greater than dataarray2 and yesterdays' value of dataarray1 is less or equal of dataarray2 then it will retun 1 for that position or 0.| a := cross[close;open] <br> if ( a == 1 ) <br> { <br> buy{} <br> } <br> will show a buy arrow where close is greater than open.
+DIVERGENCE|DIVERGENCE|DIVERGENCE[dataarray1;dataarray2;minchange;daysbefore]|This indicator will find out -ive or +ive divergence. it will compare today's dataarray1 value with yesterday's dataarray1 value and find out % change. If absolute % change is above minchange then it checks out <br>if todays dataarray1 value is greather than yesterdays dataarray1 value and todays dataarray2 value is less than yesterday's dataarray2 value then it returns 1 <br>if todays dataarray1 value is less  than yesterdays dataarray1 value and todays dataarray2 value is greater than yesterday's dataarray2 value then it returns -1 <br>| 
+MFI|Money Flow Index|MFI[noofdays;daysbefore]|This will calculate Money Flow Index|MFI[14;0] will return value of Money Flow Index for 14 days for today
+plotmain|plot on main graph|plotmain1{expr,color} plotmain2{expr,color} plotmain3{expr,color}|this function is used when you are drawing a cusmized indicator and would like to draw some graph on main screen too.This function will work same as plot function but called when you are plotting a custmized indicator.|Lets say you would like to plot rsi14 using custmized indicator and would like to see oversold and overbought zone on main graph using differnt color. To do so we need plotmain function which will be like this<br>a := rsi[14;0]<br> if ( a > 70 ) {<br> plotmain1{close[0],red} <br>}<br>if ( a < 30 ) { <br> plotmain1{close[0],white}<br>}<br>else { <br> plotmain1{close[0],green}<br>}<br>a<br> This will return rsi14 for drawing as custmized indicator and will overwrite color on  maingraph
+linexy|line draw|linexy{x1bar,y1pos,x2bar,y2pos}|will plot line starting from x1bar and y1position to x2bar to y2 position | linexy{0,close,noofbar,close,red} <br> this will create a vertical line starting from first bar to last bar in red color
+getnotzerovalue|getnotzerovalue|getnotzerovalue{nth,dataarray}|this function will return the nth nonzero value from the dataarray. This function is very useful when you want to find out double top,bottom pattern as using this function over peak indicator you can find out two nearest top and can check it they are nearly equal|This example will find out double top 
+getnotzerobaraway|getnotzerobaraway|getnotzerobaraway{nth,dataarray}|this function will return the nth nonzero value from the dataarray. This function is very useful when you want to find out double top,bottom pattern as using this function over peak indicator you can find out two nearest top and can check it they are nearly equal|This example will find out double top 
+zigzag|zigzag indicator|zigzag[dataarray;perchange]|This indiactor will find out peak and trough in the graph for minimum perchange.zigzag indicator will start from first bar and find out first peak or trough point with minimim percentahe change and then keep of finding | 
+peak|peak indicator|peak[dataarray;perchange]|this indicator will internally use zigzak indicator and then find out all peak points.
+trough|trough indicator|trough[dataarray;perchange]|this indicator will internally use zigzak indicator and then find out all trough points
+mfi|money flow index |mfi[noofdays;daysbefore]|this indicator will calculate money flow index
+remove|remove|remove{variable}|Will remove specified variable for current bar.|if ( barno == 0 )<br>{<br>     i := 0<br>     while ( i < noofbars )<br>     {<br>           updatevar{b,10,i}<br>   i :=  i + 1 <br>     }<br>remove{i}<br>}<br>In thsi example we are initialize a variable called b for all bars with value 10 but for doing so we created a variable called i for first bar. Now after completion of process of initilization we removed that variable from first bar.
+compare|compare stock|compare[symbol;indicator]|This indicator will return data for other stock if you want to compare it with current stocks|compare[nifty;close]<br> This will return data for closing price of nifty for same historic period <br> NOTE: You can use only for Historical data
+
+COMPAREINTRA|get intradayindicator value|COMPAREINTRA[symbol;indicator]|This indicator will return data for specified symbol<br>This can only be used for intradayscan.You should use it when want to compare ( like nifty to other stock) intraday change.<br>This indicator could be very useful to find out market movement  |#x:( ( COMPAREINTRA[nifty;close] - COMPAREINTRA[nifty;close[-5]] ) * 100 ) / COMPAREINTRA[nifty;close]<br>#y: ( ( close[0] - close[-5] )  ) * 100 <br>select symbol,x,y from table  | This will be used for intraday scan query <br>This query will return 5 minute change in nifty and same time 5 minute change in stock
+DAYHIGH|return day high.User only on intraday scan|DAYHIGH[daysbefore]|Return dayhigh for intraday. |select symbol,dayhigh from table| will return dayhigh value
+DAYLOW|return day low.User only on intraday scan|DAYLOW[daysbefore]|Return daylow for intraday. |select symbol,daylow from table| will return daylow value
+DAYOPEN|return day open.User only on intraday scan|DAYOPEN[daysbefore]|Return dayopen for intraday. |select symbol,dayopen from table| will return dayopen value
+TOTALVOLUME|return totalvolume.User only on intraday scan|TOTALVOLUME[daysbefore]|Return TOTALVOLUME forday. |select symbol,TOTALVOLUME from table| will return TOTALVOLUME 
+HIST|Historical Indi value|HIST[indicator]|Return historical indicator value<br>Useful when comparing intraday value with historical value|select symbol,close,hist[Highindays[250;0]] from table where close < hist[lowindays[250;0]]|this will return stock which are touching around yearly low.

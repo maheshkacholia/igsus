@@ -1,0 +1,140 @@
+<html>
+<body>
+<b> How to Use Stock Filter </b>
+<p>
+Stock Filter is unique tool developed by iGuideStocks.com. Using stock filter you can write filters and scan<br>
+market.<br>
+Following things you can do<br>
+1. execute existing filters<br>
+2. create and save new filter<br>
+3. creating filter using Filter Builder Screen.<br>
+<p>
+Following process you need to do to create and run a filter
+</p>
+<p>
+Let's say we want to get all stocks for which today's closing price is greater than yesterday's closing price<br>
+also we would like to display following fields in result<br>
+Symbol,close,open,high,low,volume<br>
+
+We will follow following steps<br>
+</p>
+<p>
+<b>Step 1 </b><br>
+Download data on which we want to run scan. Lets say we select category Nifty and download data for it<br>
+To do so click on icon which has tooltip like <i>"download and cache data" ( 8th from left )</i><br>
+It will display download screen.<br>
+Select Nifty category from drop down and start date (this much data will be used for scanning or running formula)<br>
+</p>
+<p>
+Now click on download. To learn more click on help of data download screen.<br>
+Once data is download step 1 is complete
+</p>
+
+<b>Step 2 </b><br>
+Now select category as Nifty <i>"select category" tool tip ( 2nd from left)</i>  from Filter Screen<br>
+
+<b>Step 3 </b><br>
+Now we will write filter
+<p>
+Writing filter is very easy and you should read at <a href="http://www.iguidestocks.com/project/igsnew/igs/help.jsp">help</a><br>
+section of our website
+</p>
+Syntax of writing filter is like this<br>
+<b><i>select [comma separated fileds which needs to be displayed] from table where [conditions]</b></i>
+</p>
+
+<br>So here we are displaying symbol,open,high,low,close,volume and checking <br>
+if todays's price is greater than yesterday's price<br>
+
+The syntax willl look like<br>
+select symbol,open,high,low,close,volume where close[0] > close[-1]<br>
+
+Here close[0] is today's closing price and close[-1] is yesterday's closing price<br>
+
+You need to read <a href="http://www.iguidestocks.com/project/igsnew/igs/download/How%20_to_Use_IGS_FormulaLanguage.pdf">Understand
+IGS Formula Language</a><br>
+and <a href="http://www.iguidestocks.com/project/igsnew/igs/download/IGS_SQL.pdf">igs query language</a><br>
+
+To know syntax of each indicator pls click on "api help"  icon (2nd from right )<br>
+
+
+<b>Step 4</b><br>
+
+After writing formula click on "execute igs query" icon (7 from left) and you will see result<br>
+
+<b>Step 5</b><br>
+If you want to create a category out of that result you can do so by clicking on first icon "add result to tree"<br>
+
+
+Now to save this query click on "save igs query" icon (5th from left)<br>
+
+To open existing query click on "select igs query" icon (4th from left)<br>
+
+to download result in a csv file or open result in excel sheet click on "download file as csv" icon (9th from left)<br>
+
+<p>
+Lets write some more formulas for your understanding <br>
+
+<b>Sorting stocks by percentage daily change</b><br>
+
+Here first we need to define percentage change variable and then need to use it in our query<br>
+
+To define variable use # . The synatx is like this<br>
+#[var name]:expression<br>
+So perchange will be <br>
+#perchange:( ( close[0] - close[-1] ) * 100 ) / close[-1]<br>
+for sorting use <b>sortby</b> <br>
+so  the whole query will be like this <br>
+#perchange:( ( close[0] - close[-1] ) * 100 ) / close[-1]<br>
+select symbol,open,high,low,close,volume,perchange from table sortby perchange<br>
+
+Like wise we can write any type of formula . You can also call a library function and get variables from <br>
+those functions into query.<br>
+
+Looks at following queries like CamarillaPivotPoints where a library function si called and variables are exposed<br>
+
+NetYearProfit.igsql,NetSaleNetProfitRatioIndia.igsql... where fundamental data is being displayed<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

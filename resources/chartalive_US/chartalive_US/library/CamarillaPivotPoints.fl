@@ -1,0 +1,33 @@
+@CAMARILLA PIVOT POINTS IS A SET OF EIGHT VERY PROBABLE LEVELS WHICH RESEMBLE SUPPORT 
+@AND RESISTANCE VALUES FOR A CURRENT TREND. THE ORIGIN AND THE PRECISE WAY TO CALCULATE 
+@THESE PIVOT POINTS ARE UNCLEAR. THE MOST IMPORTANT IS THAT THESE PIVOT POINTS WORK FOR 
+@ALL TRADERS AND HELP IN SETTING THE RIGHT STOP-LOSS AND TAKE-PROFIT ORDERS
+H  := HIGH[0]
+L  :=  LOW[0]
+C  := CLOSE[0]
+R4 := ( H  -  L )  *  1.1 / 2 + C 
+
+R3 :=  ( H  -  L ) * 1.1 / 4 + C 
+
+R2 :=  ( H  -  L ) * 1.1 / 6 + C 
+
+R1 :=  ( H  - L ) * 1.1 / 12 + C 
+
+S1 := C - ( H  - L ) * 1.1 / 12 
+
+S2 := C - ( H - L ) * 1.1 / 6 
+
+S3 := C - ( H - L ) * 1.1 / 4 
+
+S4 := C - ( H  - L ) * 1.1 / 2  
+
+expose{r4}
+expose{r3}
+expose{r2}
+expose{r1}
+expose{s1}
+expose{s2}
+expose{s3}
+expose{s4}
+
+TRUE 

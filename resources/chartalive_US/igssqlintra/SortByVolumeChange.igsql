@@ -1,0 +1,2 @@
+#x: ( totalvolume - hist[volume]  )  * 100  / totalvolume 
+select symbol,close,x,hist[close],totalvolume,hist[volume]  from table   sortby  -1 * x

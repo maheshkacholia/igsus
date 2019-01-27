@@ -1,0 +1,3 @@
+@COMMENT This will give status of Major Indicators
+@RECORDSTOUSE=60=
+select symbol,close,SHORTERMAVG,RSISTATUS,MACDSTATUS,AROOPSTATUS,SHORTERMSTOCKASTICS,WILLIAMSTATUS from table where buysellsignal

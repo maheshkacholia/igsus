@@ -1,0 +1,4 @@
+@COMMENT Stocks whose MACD line crossed above the signal line today after being below the signal line for the previous three days.
+@COMMENT  Bullish MACD crossovers typically happen soon after a stock has started to rise after a down-trending period. 
+@RECORDSTOUSE=40=
+select symbol,close[0],high[0],low[0] from table where MACDLINE[12;26;9;0] > MACDSIGNAL[12;26;9;0] AND MACDLINE[12;26;9;-1] < MACDSIGNAL[12;26;9;-1]  and MACDLINE[12;26;9;-2] < MACDSIGNAL[12;26;9;-2]  and MACDLINE[12;26;9;-3] < MACDSIGNAL[12;26;9;-3]

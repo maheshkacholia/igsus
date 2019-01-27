@@ -1,0 +1,38 @@
+@PARAMETER PERIOD SMOOTHPERIOD
+@VALUE 14 1
+@COMMENT StochRSI measures the value of RSI relative to its high/low range over a set number of periods.
+@COMMENT StochRSI equals 0 when RSI is at its lowest point for the period.1 when RSI is at its highest point for the period.   
+@COMMENT StochRSI equals .5 when RSI is in the middle of its high-low range for the period..2 when RSI is near the low of its high-low range for the period. 
+@COMMENT StochRSI equals .80 when RSI is near the high of its high-low range for the period.
+@COMMENT A move above .80 is considered overbought, while a move below .20 is considered oversold. 
+@COMMENT the centerline is at .50. StochRSI reflects an uptrend when consistently above .50 and a downtrend when consistently below .50. 
+function mystrsi
+{
+
+#a:RSI[$PERIOD$;0]
+	StochRSI :=  0
+	xl  :=  Lowindaysany[a;$PERIOD$;0]
+	xh :=  highindaysany[a;$PERIOD$;0]
+	x1 :=  a  - xl
+	x2 :=  xh - xl 
+	stockrsi := 0
+	if ( x2 > 0 )
+	{
+	    stockrsi := x1  /  x2
+	}
+
+stockrsi
+}
+
+if ( barno == 30 )
+{
+
+     text{0.6,red,"Over Bought(Sell signal)",5}
+     text{0.10,green,"Over Sold(Buy Signal)",5}
+
+}
+
+PLOT1{0.80,RED}
+PLOT2{0.20,GREEN}
+
+x := mov[mystrsi;$SMOOTHPERIOD$;E;0]

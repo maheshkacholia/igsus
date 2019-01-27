@@ -1,0 +1,6 @@
+@COMMENT Stocks that closed at a price that was lower than any previous 'low' value during the previous 260 trading sessions
+@COMMENT Make sure you while downloading start date is one year and more from today
+@COMMENT stocks making the new-high list for the first time in a bull market. goes on high (buy signal) 
+@RECORDSTOUSE=265=
+#YearlyLow:lowindays[260;0]
+select symbol,close[0],high[0],low[0],YearlyLow  from table where low[0] <= YearlyLow

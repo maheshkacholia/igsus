@@ -1,0 +1,39 @@
+@PARAMETER DAYS 
+@VALUE 14
+@COMMENT  A rising Price and Volume Trend confirms an up-trend and a falling PVT confirms a down-trend.
+@COMMENT Bullish divergence between PVT and price warns of market bottoms.
+@COMMENT Bearish divergence between PVT and price warns of market tops.
+@COMMENT In an up-trend, if price makes a new High (a higher peak than the last) but the indicator fails to do so, 
+@COMMENT that is a bearish divergence.
+@COMMENT In a down-trend, if price makes a new Low (a lower trough than the last) but the indicator does not, 
+@COMMENT a bullish divergence occurs.
+function mypv 
+{
+
+if ( barno  ==  0 )
+{
+    addtoglobal{pviprev,0}
+}
+y  := 0
+if ( barno > 0 )
+{
+   if ( volume[0]  >  volume[-1] )
+   {
+   
+       x :=  (  (  Close[0]  -  close[-1]  )  *  100  )   / ( close[-1]  + 0.0001 )
+       y :=  pviprev   + x   
+    }
+    else
+    {
+        y :=  pviprev 
+    }
+}
+addtoglobal{pviprev,y}
+
+y
+}
+t  :=  mov[mypv;$DAYS$;e;0]
+plot1{t,red}
+PLOTPRICEONLEFT{t,"Signal",red}
+
+mypv

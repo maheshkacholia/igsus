@@ -1,0 +1,3 @@
+@COMMENT Intraday pivot points giving more weight to the Close price of the previous session. 
+@RECORDSTOUSE=2=
+select symbol,close[0],p,s1,s2,r1,r2 from table where woodiepivotpoint

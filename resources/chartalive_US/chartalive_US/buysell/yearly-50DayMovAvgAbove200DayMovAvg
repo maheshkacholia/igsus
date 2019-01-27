@@ -1,0 +1,9 @@
+@COMMENT Stocks that had the simple moving average of the last 50 closing prices move above the simple moving average of the last 200 closing prices.a bug signal
+@COMMENT  Typically, the 50-day MA crosses the 200-day MA soon after a stock has turned around and started moving higher after 
+@COMMENT a multi-month downtrend. Many longer-term value investors consider this kind of crossover to be "the last chance" to get 
+@COMMENT in on a stock that should perform well in the mid-to-long term. (This will show all stocks for which diff is in range of 5%) 
+@RECORDSTOUSE=220=
+#MOV50:SMA[50;0]
+#MOV200:SMA[200;0]
+#PerchangeBetween2MA:  ( SMA[50;0] -  SMA[200;0] ) * 100 / SMA[200;0] 
+select symbol,close[0],high[0],low[0],MOV50,mov200,PerchangeBetween2MA  from table where PerchangeBetween2MA > 0  and PerchangeBetween2MA < 5

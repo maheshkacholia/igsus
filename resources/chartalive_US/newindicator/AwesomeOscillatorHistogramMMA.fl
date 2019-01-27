@@ -1,0 +1,61 @@
+@PARAMETER LOWDAYS HIGHDAYS  BUYSELLSIGNAL
+@VALUE 15 40
+@COMMENT AWESOME OSCILLATOR HISTOGRAM Using Mahesh Moving Average
+@COMMENT The Awesome Oscillator MMA is calculated by Creating Histograph of difference between Low and High days of Mahesh Moving Average.
+@COMMENT The Awesome Oscillator is a histogram showing the market momentum of a low number of periods compared to the momentum of 
+@COMMENT This indicator provides very good signal and shoes good trend of market.
+@COMMENT Select True for BUYSELLSIGNAL if you also want to see buy /sell signal generated from this indicator.
+
+#C: MMA[$LOWDAYS$;0]  -  MMA[$HIGHDAYS$;0]
+S := $BUYSELLSIGNAL$
+IF ( BARNO  ==  0 )
+{
+   ADDTOGLOBAL{TEMP,0}
+}
+if ( S )
+{
+
+	IF (  ( C > 0 AND C[-1] < 0 )    )
+	{
+	    BUY{}
+
+	}
+	ELSE IF  ( C < 0 AND C[-1] > 0 )
+	{
+	   SELL{}
+	} 
+}
+IF ( BARNO < $HIGHDAYS$ )
+{
+}
+ELSE IF ( C > 0 )
+{ 
+     LINE{0,C ,GREEN}
+     IF  (  TEMP  ==  0  )
+     {
+     	if ( s )
+     	{
+  
+  		BUY{}
+     	
+     	}
+         ADDTOGLOBAL{TEMP,1}
+     } 
+}
+ELSE
+{
+        LINE{0,C ,RED}
+    IF  (  TEMP  ==  0  )
+     {
+         if ( s )
+         {
+         
+         	SELL{}
+         
+         }
+         ADDTOGLOBAL{TEMP,1}
+     } 
+
+}
+C     
+   

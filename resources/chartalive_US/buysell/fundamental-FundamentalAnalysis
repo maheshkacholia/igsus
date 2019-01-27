@@ -1,0 +1,73 @@
+@COMMENT Counting various ratios and providing good fundamental stocks 
+@COMMENT PE = closingprice / EPS . Should be in ratio of 1 to 20. If higher then there must be good growth
+@COMMENT earninggrowth is caluting by finding out %change in latest quarter netfrofit and 1 yr back profit in same quarter. 
+@COMMENT Good if +ive means company is increasing its profit
+@COMMENT profitmargin is ratio of netprofit to netsale in yr . The more it is good. Means comoany can sustatain price war easily
+@RECORDSTOUSE=1=
+function  myperatio
+{
+	pe := close[0] / ( basiceps[0;0] + basiceps[1;0] + basiceps[2;0] + basiceps[3;0] )
+	
+	buysellcounter := 0
+
+	if ( pe < 0 )
+	{
+		pe := "SELL#" + pe	
+        	buysellcounter := buysellcounter - 2 
+
+
+	}
+	else if ( pe > 0 and pe < 20 )
+	{
+		buysellcounter := buysellcounter +  1 
+		pe := "BUY#" + pe	
+	
+	}
+	else 
+	{
+	        buysellcounter := buysellcounter - 1 
+		pe := "SELL#" + pe	
+	
+	}
+        expose{pe}
+        eps := basiceps[0;0] + basiceps[1;0] + basiceps[2;0] + basiceps[3;0]
+        expose{eps}
+        
+        earninggrowth  :=  ( NETPROFIT[0;0] - NETPROFIT[4;0] ) * 100 / NETPROFIT[4;0]
+        if ( earninggrowth > 0 )
+        {
+            
+            earninggrowth := "BUY#" + earninggrowth
+        }
+        else
+        {
+            earninggrowth := "SELL#" + earninggrowth
+        }
+        
+        TotNETSALES := NETSALES[0;0]  + NETSALES[1;0]  +  NETSALES[2;0]  + NETSALES[3;0]
+        if (  TotNETSALES == 0 )
+        {
+        	TotNETSALES := TOTALINCOME[0;0] + TOTALINCOME[0;1] + TOTALINCOME[0;2] + TOTALINCOME[0;3]
+        }
+        
+        totalnetprofit := NETPROFIT[0;0] + NETPROFIT[1;0] + NETPROFIT[2;0] + NETPROFIT[3;0]
+        profitmargin :=   (  totalnetprofit *  100 ) / TotNETSALES
+        
+        if (  profitmargin < 10 )
+        {
+        	profitmargin := "SELL#" + profitmargin
+        }
+        else
+        {
+         	profitmargin := "BUY#" + profitmargin
+        
+        }
+        
+        expose{profitmargin}
+        expose{earninggrowth}
+       
+       
+        true 
+}
+#LASTUPDATEDQTR:QUARTER[0;0]
+select symbol,close,LASTUPDATEDQTR,pe,earninggrowth,profitmargin,eps from table where myperatio 

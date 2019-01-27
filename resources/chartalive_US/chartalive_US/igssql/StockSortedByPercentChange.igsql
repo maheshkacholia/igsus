@@ -1,0 +1,2 @@
+#diff:  ( close[0] - close[-1] ) * 100  / close[-1]
+select symbol,close[0],close[-1],diff[0] from table sortby -1 * diff[0]

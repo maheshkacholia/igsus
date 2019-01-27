@@ -1,0 +1,1 @@
+select symbol,open[0],cmf[14;0],cmf[14;-2]  from table where cmf[14;0] <  -0.2 and cmf[14;-1] > -0.2 and cmf[14;-2] > -0.2

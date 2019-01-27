@@ -1,0 +1,40 @@
+@PARAMETER DAYS 
+@VALUE 14
+@COMMENT The Commodity Channel Index (also known as CCI) is a momentum indicator It can be used either as an oscillator 
+@COMMENT showing overbought and oversold levels, or as a trend indicator showing the beginning and end of trends. 
+@COMMENT The CCI is calculated using the price, a simple moving average of the price, and a standard deviation around the price. 
+@COMMENT The CCI displays the difference between the price and the simple moving average as a momentum line oscillating around a 0 (zero) line
+@COMMENT when the CCI is above 100, and an oversold level when the CCI is below the -100 line. 
+@COMMENT The CCI can also be used to identify the beginning of a trend when the CCI crosses above the 100 line or below the -100 line, 
+@COMMENT and the end of a trend when it crosses back over the line. The CCI is also used as a pattern indicator, where trades are entered 
+@COMMENT and exited based upon the patterns created by the momentum line, and trend lines are drawn on the CCI instead of the prices.
+a := CCI[$DAYS$;0]
+if ( a > 100 )
+{
+    plot1{a,green}
+}
+else if ( a < -100 )
+{
+    plot1{a,red}
+}
+else
+{
+    plot1{a,white}
+}
+
+if ( barno == 30 )
+{
+
+     text{40,green,"Over Sold(Buy)",5}
+     text{-150,red,"Over Bought(Sell)",5}
+
+}
+
+PLOTPRICEONRIGHT{-100,RED}
+PLOTPRICEONRIGHT{100,GREEN}
+
+
+plot2{100,green}
+plot3{-100,red}
+
+a

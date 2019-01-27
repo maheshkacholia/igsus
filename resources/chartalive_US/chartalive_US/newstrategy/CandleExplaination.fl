@@ -1,0 +1,76 @@
+@COMMENT:This strategy is the excellent source to understand candle stick pattern.Candle stick pattern are widely
+@COMMENT:used by technical analyst and they are good indicator of mkt. Major candle stick pattern are  being recognized 
+@COMMENT:and explaination is given. After applying this strategy. use graphtype as candle stick and click mouse on graph
+@COMMENT:use mouse or arrow key to go left and right and on each bar you will appropriate candle stick pattern occured 
+@COMMENT:pattern name,explaination and intrepretation is mentioned. also color on pattern name(red or green) will tell 
+@COMMENT:type of pattern(bullish or bearish )
+
+
+IF ( BEARISHHARAMI )
+{
+    ALERTTEXT{ " BEARISHHARAMI  ",red }
+    ALERTTEXT{ " SMALL RED BODY IS CONTAINED WITHIN LARGE GREENBODY  ",yellow }
+    ALERTTEXT{ "INTERPRETATION :A BEARISH PATTERN WHEN PRECEDED BY UPTREND",white}
+}
+IF ( BULLISHENGULFING )
+{
+    ALERTTEXT{ " BULLISHENGULFING  ",green }
+    ALERTTEXT{ " SMALL RED BODY IS FOLLOWED BY AND CONTAINED LARGE GREENBODY  ",yellow }
+    ALERTTEXT{ "INTERPRETATION :A MAJOR BOTTOM REVERSAL SIGNAL",white}
+}
+IF ( BULLISHHARAMI )
+{
+    ALERTTEXT{ " BULLISHHARAMI  ",green }
+    ALERTTEXT{ " SMALL GREEN BODY IS CONTAINED WITHIN LARGE RED BODY  ",yellow }
+    ALERTTEXT{ "INTERPRETATION :A BULLISH PATTERN WHEN PRECEDED BY DOWNTREND",white}
+ 
+}
+IF ( EveningDojiStar )
+{
+    ALERTTEXT{ " EveningDojiStar   ",red }
+     ALERTTEXT{ " lange green body followed by doji that is above white body third is red body closes well into whitebody  ",yellow }
+     ALERTTEXT{ "INTERPRETATION :major top reversal signal, more bearish than other because of doji",white}
+ 
+}
+IF ( DARKCLOUDCOVER )
+{
+   ALERTTEXT{ " BULLISHHARAMI  ",red }
+    ALERTTEXT{ " long GREEN BODY IS followed by red candle,red candle opens above green candle's high and close into body  ",yellow }
+    ALERTTEXT{ "INTERPRETATION :A Bearish reversal signal durning an uptrend",white}
+  
+}
+IF ( HAMMER )
+{
+    ALERTTEXT{ " Hammer   ",red }
+     ALERTTEXT{ " looks like a square lollipop with long stick,form when a security moves significantly lower after the open, but rallies to close well above the intraday low  ",yellow }
+     ALERTTEXT{ "INTERPRETATION :bullish reversal pattern that forms after a decline. It can also mark bottoms or support levels",white}
+ 
+}
+IF ( HANGINGMAN )
+{
+    ALERTTEXT{ " HANGINGMAN   ",red }
+     ALERTTEXT{ " looks like a square lollipop with long stick,Forming after an advance, a Hanging Man signals that selling pressure is starting to increase.  ",yellow }
+      ALERTTEXT{ "INTERPRETATION :Hanging Man is a bearish reversal pattern that can also mark a top or resistance level.",white}
+ 
+}
+IF ( INVERTEDHAMMER )
+{
+   ALERTTEXT{ " INVERTEDHAMMER   ",green }
+     ALERTTEXT{ " In a downtrend, the open is lower, then it trades higher, but closes near its open, therefore looking like an inverted lollipop.  ",yellow }
+      ALERTTEXT{ "INTERPRETATION :A one day bullish reversal pattern.",white}
+ }
+
+IF ( PIERCINGLINE )
+{
+   ALERTTEXT{ " PIERCINGLINE   ",green }
+     ALERTTEXT{ " In a downtrend, The first day, in a downtrend, is a long black day. The next day opens at a new low, then closes above the midpoint of the body of the first day.  ",yellow }
+      ALERTTEXT{ "INTERPRETATION :A bullish two day reversal pattern.",white}
+
+}
+IF ( SHOOTINGSTAR )
+{
+   ALERTTEXT{ " SHOOTINGSTAR   ",red }
+      ALERTTEXT{ " In a downtrend, It opens higher, trades much higher, then closes near its open. It looks just like the Inverted Hammer except that it is bearish.  ",yellow }
+       ALERTTEXT{ "INTERPRETATION :A single day pattern that can appear in an uptrend.",white}
+
+}

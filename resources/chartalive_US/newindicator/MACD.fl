@@ -1,0 +1,28 @@
+@PARAMETER LOWDAYS HIGHDAYS SIGNAL
+@VALUE 12 26 9
+@COMMENT Macd Indicator is difference between Short and Long Moving average.Signal Line is Moving average of MACD
+@COMMENT when MACD is above Signal line it is a bullish signal and vis a versa a bug signal generates when MACD crossover Signal
+A :=  MACDLINE[$LOWDAYS$;$HIGHDAYS$;$SIGNAL$;0]
+B := MACDSIGNAL[$LOWDAYS$;$HIGHDAYS$;$SIGNAL$;0]
+A1 :=  MACDLINE[$LOWDAYS$;$HIGHDAYS$;$SIGNAL$;-1]
+B1 := MACDSIGNAL[$LOWDAYS$;$HIGHDAYS$;$SIGNAL$;-1]
+
+C :=  A - B
+
+D := A  > B AND A1 < B1
+
+PLOTPRICEONLEFT{C,"MACDDIV",WHITE}
+PLOTPRICEONLEFT{B,"SIG",RED}
+
+PLOTPRICEONRIGHT{B,RED}
+
+PLOT1{ B,RED}
+IF ( C > 0 )
+{ 
+     LINE{0,C ,GREEN}
+}
+ELSE
+{
+        LINE{0,C ,RED}
+}
+A     

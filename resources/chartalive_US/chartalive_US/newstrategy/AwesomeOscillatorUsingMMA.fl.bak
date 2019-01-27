@@ -1,0 +1,46 @@
+@PARAMETER LOWDAYS HIGHDAYS
+@VALUE 10 34
+@COMMENT One of good leading buy/sell indicator formula.Gives very good result for long term investor. 
+@COMMENT The formula is developed using Mahesh Moving Average which is iGuideStocks's own developed indicator.
+@COMMENT It provides buy signal whenever shor term mahesh moving average moves above long term mahesh moving average
+@COMMENT This indicator use Volume is calculation so make sure 
+@COMMENT 1)at least one year data is used 2)stock is not splitted and if splitted proper adjustement done 
+@COMMENT ShortName AOM
+#C: MMA[$LOWDAYS$;0]  -  MMA[$HIGHDAYS$;0]
+IF ( BARNO  ==  0 )
+{
+   ADDTOGLOBAL{TEMP,0}
+}
+IF (  ( C > 0 AND C[-1] < 0 )    )
+{
+    BUY{"AOM"}
+  
+}
+ELSE IF ( C < 0 AND C[-1] > 0 )
+{
+   SELL{"AOM"}
+} 
+IF ( BARNO < $HIGHDAYS$ )
+{
+}
+ELSE IF ( C > 0 )
+{ 
+     LINE{0,C ,GREEN}
+     IF  (  TEMP  ==  0  )
+     {
+         BUY{"AOM"}
+         ADDTOGLOBAL{TEMP,1}
+     } 
+}
+ELSE
+{
+        LINE{0,C ,RED}
+    IF  (  TEMP  ==  0  )
+     {
+         SELL{"AOM"}
+         ADDTOGLOBAL{TEMP,1}
+     } 
+
+}
+C     
+   

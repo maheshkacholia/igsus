@@ -1,0 +1,66 @@
+@PARAMETER MINCHANGE  TOPDIFF
+@VALUE 10   3
+@COMMENT This strategy will plot fibonnaci retracement levels (38.2%,50%,61.2%,100%).
+@COMMENT To plot these levels . first last top and last bottom based on Minchange and top diff parameter will be used 
+@COMMENT Using that area starting from top all these level will be plotted. These level are avery useful to put
+@COMMENT stoploss or make a entry for stock and widely used by traders
+#T:TROUGH[CLOSE[0];$MINCHANGE$] 
+#P:PEAK[CLOSE[0];$MINCHANGE$] 
+
+IF ( BARNO == NOOFBARS - 1 )
+{
+     TVAL  :=   GETNOTZEROVALUE{1,T}
+     TPOS  :=    GETNOTZEROBARAWAY{1,T}
+     
+     PVAL  :=   GETNOTZEROVALUE{1,P}
+     PPOS  :=    GETNOTZEROBARAWAY{1,P}
+     
+@     GETVALUE{BUY{},BARNO - PPOS} 
+@   GETVALUE{SELL{},BARNO - TPOS} 
+      
+      DIFF :=  PVAL -  TVAL
+      
+      LINEXY{BARNO,TVAL,0,TVAL,YELLOW} 
+     PLOTPRICEONRIGHT{TVAL,YELLOW}
+@    ALERTTEXT{"0% RETRACEMENT-" + TVAL}
+     ADDTOGLOBAL{TMP,TVAL}
+      GETVALUE{TEXT{TMP,GREEN,"0% -"  + TMP ,3},10}	
+ 
+ 
+     VAL1 := TVAL + 0.382  *  DIFF 
+      LINEXY{BARNO,VAL1,0,VAL1,PINK} 
+     PLOTPRICEONRIGHT{VAL1,PINK}
+@  ALERTTEXT{"38.2% RETRACEMENT - " + VAL1}
+     ADDTOGLOBAL{TMP,VAL1}
+      GETVALUE{TEXT{TMP,GREEN,"38.2% -"  + TMP ,3},100}	
+ 
+     VAL1 := TVAL + 0.5  *  DIFF 
+      LINEXY{BARNO,VAL1,0,VAL1,RED} 
+     PLOTPRICEONRIGHT{VAL1,RED}
+@ALERTTEXT{"50% RETRACEMENT - " + VAL1}
+ADDTOGLOBAL{TMP,VAL1}
+      GETVALUE{TEXT{TMP,GREEN,"50.0% -"  + TMP ,3},10}	
+ 
+
+
+    VAL1 := TVAL + 0.612  *  DIFF 
+      LINEXY{BARNO,VAL1,0,VAL1,YELLOW} 
+     PLOTPRICEONRIGHT{VAL1,YELLOW}
+@ ALERTTEXT{"61.2% RETRACEMENT - " + VAL1}
+ADDTOGLOBAL{TMP,VAL1}
+      GETVALUE{TEXT{TMP,GREEN,"61.2% -"  + TMP ,3},100}	
+ 
+    VAL1 := TVAL  +   DIFF 
+      LINEXY{BARNO,VAL1,0,VAL1,PINK} 
+PLOTPRICEONRIGHT{VAL1,PINK}
+@ALERTTEXT{"100% RETRACEMENT - " + VAL1}
+  ADDTOGLOBAL{TMP,VAL1}
+      GETVALUE{TEXT{TMP,GREEN,"100.0% -"  + TMP ,3},10}	
+   
+     
+
+
+}
+
+
+     

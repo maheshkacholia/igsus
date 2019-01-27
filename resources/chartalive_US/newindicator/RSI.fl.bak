@@ -1,0 +1,20 @@
+@PARAMETER DAYS
+@VALUE 14
+@COMMENT above 70 value used for showing overbought(a sell signal) and below 30 it is oversold(a buy signal)  
+A := RSI[$DAYS$;0]
+B := RSI[$DAYS$;-1]
+C := RSI[$DAYS$;-2]
+D := RSI[$DAYS$;-3]
+
+A1 := A < 70 AND B > 72 AND C > 71 AND D > 70
+B1 := A  > 30 AND B < 29 AND C < 28 AND D < 27
+if ( a1 )
+{
+    buy{""}
+}
+PLOT1{70,RED}
+PLOT2{30,GREEN}
+
+A
+      
+ 

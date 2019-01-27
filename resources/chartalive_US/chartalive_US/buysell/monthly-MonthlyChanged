@@ -1,0 +1,4 @@
+@COMMENT Monthly Changed in price
+@RECORDSTOUSE=25=
+#MonthlyPercentageChange:( close[0] - close[-20] ) * 100  / close[-20]
+select symbol,close,high,low,volume,close[-20],MonthlyPercentageChange  from table 

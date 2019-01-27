@@ -1,0 +1,4 @@
+@COMMENT Returns No of days stock 's today's closing price is less than yesterday's closing price 
+@RECORDSTOUSE=20=
+#NoofDaysStockIsDown:barsince{close[0]  >  close[-1] }
+select symbol,close[0],volume[0],NoofDaysStockIsDown from table  

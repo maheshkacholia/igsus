@@ -1,0 +1,10 @@
+@PARAMETER ShortPeriod  LongPeriod
+@VALUE 3 10
+@COMMENT Chaikin Oscillator is simply MACD applied to the Accumulation/Distribution Line using Short and Long Period.
+@COMMENT It should used in conjunction with a 21 day price envelope and an overbought/oversold indicator (such as Momentum or RSI).
+@COMMENT Go long on a bullish divergence. Go short on a bearish divergence.
+@COMMENT In an up-trend, if price makes a new High (a higher peak than the last) but the indicator fails to do so, that is a bearish divergence.
+@COMMENT In a down-trend, if price makes a new Low (a lower trough than the last) but the indicator does not, a bullish divergence occurs.
+#C:MOV[ACCDIS[0];$ShortPeriod$;E]  -  MOV[ACCDIS[0];$LongPeriod$;E] 
+c
+   

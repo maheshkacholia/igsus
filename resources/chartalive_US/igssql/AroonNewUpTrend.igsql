@@ -1,0 +1,1 @@
+select symbol,open[0],AROOPOSi[14;0],AROOPOSi[14;-1] from table where AROOPOSI[14;0] > 50 and AROOPOSI[14;-1] <= 50

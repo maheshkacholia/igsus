@@ -1,0 +1,177 @@
+#X:MMA[12;0] - MMA[26;0]
+#MIDDLESCREENBLUE:MOV[CLOSE;34; E ]
+#MIDDLESCREENYELL:MOV[OPEN;13; E ]
+#STOCHRED:STOKPERK[9;7;0]
+#STOCHLAGGING:MOV[STOKPERK[9;7;0];7;S]
+#G:GAPUP
+#C:MMA[14;0]  -  MMA[40;0]
+
+#BUL:BULLISHENGULFING
+
+
+
+
+	cx :=  "open " + open + "   high " + high  + "   low "  + low  + "   close " + close    
+	alerttext{cx,white}
+
+	cx1 :=   "  avg(monthly) volume  " + intvalue{ mov[volume;20;s;-1] / 1000 }  + " K "
+
+	
+	cx := "volume  " + intvalue{ volume / 1000 } + " K   "    +  cx1
+	alerttext{cx,white}
+
+	if ( volume >  mov[volume;20;s;-1]  *  1.5 )
+	{
+		if ( close < open )
+		{
+
+			alerttext{"high volume, closing in red",red}
+		}
+		else
+		{
+			alerttext{"high volume, closing in green",green}
+		}
+
+	}
+	if ( cci[14;0] > 100 )
+	{
+		alerttext{"CCI oversold, buy signal",green}
+	
+	}
+	else if ( cci[14;0] < -100 )
+	{
+		alerttext{"CCI overbought, sell signal",red}
+
+	}
+
+	if ( adx[14;0] > 40 )
+	{
+		alerttext{"Strong Trend",green}
+	
+	}
+	else if ( adx[14;0] < 20 )
+	{
+		alerttext{"weak trend",red}
+
+	}
+
+
+alerttext{"-----------------------------------------",white}
+
+alerttext{" wklyhigh         " + highindays[5;0] + "     wklylow           " + lowindays[5;0] ,yellow}
+alerttext{" monthlyhigh  " + highindays[20;0] + "    monthlylow    " + lowindays[20;0],yellow}
+
+
+
+IF ( BARNO  ==  0 )
+{
+   ADDTOGLOBAL{TEMP,"NONE"}
+}
+
+IF ( CROSS[STOCHRED; STOCHLAGGING ] == 1 AND  MIDDLESCREENYELL > MIDDLESCREENBLUE )
+{
+    IF  (  TEMP <> "BUY" )
+    {
+     
+       BUYSIGNAL := TRUE
+     ADDTOGLOBAL{TEMP,"BUY"}
+    }
+}    
+
+IF ( CROSS[STOCHLAGGING;STOCHRED ] == 1 AND  MIDDLESCREENYELL < MIDDLESCREENBLUE )
+{
+
+    IF  (  TEMP <> "SELL" )
+    {
+     
+       BUYSIGNAL := TRUE
+     ADDTOGLOBAL{TEMP,"SELL"}
+    }
+}    
+
+	
+IF ( BARNO == NOOFBARS - 1 )
+{
+	A := EMAANY[X[0];9;0]
+	A1 := EMAANY[X[0];9;-1]
+	A2 := EMAANY[X[0];9;-2]
+
+	BUYSIGNAL := FALSE
+	SELLSIGNAL := FALSE
+	IF ( X[0] > A AND X[-1] < A1 AND X[-2] < A2 )
+	{
+		BUYSIGNAL := TRUE
+
+	}
+	ELSE IF ( X[0] < A AND X[-1] > A1 AND X[-2] > A2 )
+	{
+		SELLSIGNAL := TRUE
+ 
+	}
+
+	
+	IF ( HAMMER AND CCI[11;0] < -50 )
+	{
+       BUYSIGNAL := TRUE
+	}
+
+	IF ( G[0] AND  BUL[-1] )
+	{
+       BUYSIGNAL := TRUE
+	}     
+	IF (  ( C > 0  AND  C[-1]  <  0 )    )
+	{
+       BUYSIGNAL := TRUE
+	}
+	ELSE IF ( C  <  0  AND  C[-1]  >  0  )
+	{
+       BUYSIGNAL := TRUE
+	}	 
+
+	IF ( BUYSIGNAL == TRUE )
+	{
+		ALERTTEXT{"STRONG BUY",GREEN}
+	}
+	IF ( SELLSIGNAL == TRUE )
+	{
+		ALERTTEXT{"STRONG SELL",RED}
+	}
+
+
+	
+	H := High
+	L := Low
+	C := Close
+
+	P  := ( H + L + C ) / 3 
+
+	R1 := floatattwo{( 2 * P ) - L } 
+
+	R2 := floatattwo{ P + H - L }
+
+	R3 := floatattwo{ H + 2 * ( P - L ) }
+
+	S1 := floatattwo{ ( 2 * P )  -  H }
+
+	S2 := floatattwo{ P - H + L }
+
+	S3 := floatattwo{ L - 2 * ( H - P ) }
+	
+	Pivot := "pivot " +  floatattwo{ P }
+		
+	Res1 :=  " Reistance    "  +  R1 + " , "  +  R2  +  " and "  +  R3
+	Sup1 :=  " Intraday support  "  +  s1 + " , "  +  s2 + " and " + s3
+
+	alerttext{"-----------------------------------------",white}
+
+	alerttext{pivot,yellow}
+	
+	alerttext{res1,yellow}
+	alerttext{sup1,yellow}
+	alerttext{"-----------------------------------------",white}
+	
+
+}         
+ 
+
+  

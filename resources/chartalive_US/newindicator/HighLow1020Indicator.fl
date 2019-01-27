@@ -1,0 +1,5 @@
+@PARAMETER DAYS
+@VALUE 20
+@COMMENT This Indicator shows how many points stock has gone in  a specified period. 
+@COMMENT This is a nice way to determine if stock is in a  TREND OR A CONGESTION AREA 
+HIGHINDAYS[$days$;0]  -  LOWINDAYS[$days$;0] 

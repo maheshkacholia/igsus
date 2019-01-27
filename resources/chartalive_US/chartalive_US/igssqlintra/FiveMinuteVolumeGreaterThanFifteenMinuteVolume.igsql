@@ -1,0 +1,1 @@
+select symbol,open,high,low,close,close[-5],volume  from table  where Mov[volume;5;s]  < Mov[volume;15;s]

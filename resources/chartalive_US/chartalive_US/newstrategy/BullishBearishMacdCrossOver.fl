@@ -1,0 +1,27 @@
+@PARAMETER PERIOD1 PERIOD2 SIGNAL
+@VALUE 12 26 9
+@COMMENT This Strategy will find a buy signal when MACD Line crossover MACd Signal line and vis a versa
+@COMMENT This is an indicator of sentiment change and should use one of signal to buy a stock. 
+@COMMENT If used alone accuracy level is low
+@COMMENT Short Name (BBMC ) is used on buy/sell signal
+
+
+#ML:MACDLINE[$PERIOD1$;$PERIOD2$;$SIGNAL$]
+#MS:MACDSIGNAL[$PERIOD1$;$PERIOD2$;$SIGNAL$]
+
+
+A := ml[0] > ms[0] AND ml[-1] < ms[-1]  AND ml[-2] < ms[-2]  AND ml[-3] < ms[-3]
+
+IF ( A )
+
+{
+   BUY{"BBMC"}
+   BUYTYPE := "STRONGBUY"
+}
+B :=  ml[0] < ms[0] AND ml[-1] > ms[-1]  AND ml[-2] > ms[-2]  AND ml[-3] > ms[-3]
+IF ( B )
+{
+    SELL{"BBMC"}
+    BUYTYPE := "STRONGSELL"
+}  
+ 

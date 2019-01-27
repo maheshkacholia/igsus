@@ -1,0 +1,56 @@
+@COMMENT This will provide list of shares which are getting bullish or bearish in last 3 days
+@COMMENT using awesomeindicatoronmma . This is a good long term indicator on buysell. requires at least 200 records
+@RECORDSTOUSE=200=
+function shortterm
+{
+#C: MMA[15;0]  -  MMA[40;0]
+
+
+   occure := 0
+   ret := false
+   buytype := ""
+   if ( c[0] > 0 and c[-1] < 0 )
+   {
+       occure := "Today"
+       ret := true
+       buytype := "BUY"
+   }
+   else if ( c[-1] > 0 and c[-2] < 0 )
+   {
+       occure := "1 day before"
+   	ret := true
+       buytype := "BUY"
+ 
+ }
+   else if ( c[-2] > 0 and c[-3] < 0 )
+   {
+       occure := "2 Day before "
+   	ret := true
+       buytype := "BUY"
+ 
+ }
+ if ( c[0] < 0 and c[-1] > 0 )
+ {
+	occure := "Today"
+	ret := true
+	buytype := "SELL"
+  }   
+  else if ( c[-1] < 0 and c[-2] > 0 )
+   {
+  	occure := "1 day before"
+  	ret := true
+  	buytype := "SELL"
+    }   
+    else if ( c[-2] < 0 and c[-3] > 0 )
+       {
+      	occure := "2 day before"
+      	ret := true
+      	buytype := "SELL"
+        }   
+    
+  
+  expose{occure}
+  expose{buytype}
+   ret 	
+}
+select symbol,buytype,occure from table   where shortterm

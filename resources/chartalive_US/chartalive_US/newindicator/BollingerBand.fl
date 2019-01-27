@@ -1,0 +1,22 @@
+@PARAMETER DAYS  standarddeviation
+@VALUE 14 2
+@COMMENT Macd Indicator is difference between Short and Long Moving average.Signal Line is Moving average of MACD
+@COMMENT when MACD is above Signal line it is a bullish signal and vis a versa a bug signal generates when MACD crossover Signal
+
+ UPPERBB  :=  UBBAND[$DAYS$;$standarddeviation$;0]
+LOWERBB  := LBBAND[$DAYS$;$standarddeviation$;0]
+MIDDLEBB  :=  (  UPPERBB + LOWERBB  )  /  2
+
+PLOTPRICEmainONLEFT{UPPERBB,"UPPERBB",yellow}
+PLOTPRICEONLEFT{LOWERBB,"LOWERBB",yellow}
+
+PLOTPRICEONRIGHT{LOWERBB,yellow}
+PLOTPRICEONRIGHT{UPPERBB,yellow}
+
+
+
+PLOTMAIN1{UPPERBB,YELLOW}
+ PLOTMAIN2{LOWERBB,YELLOW}
+BANDWIDTH  :=  (  UPPERBB  -  LOWERBB )   /  MIDDLEBB
+BANDWIDTH
+  

@@ -1,0 +1,21 @@
+IF  ( RSI[14;0] > 80 )
+{
+   BUYTYPE := "STRONGSELL"
+}
+ELSE IF ( RSI[14;0] < 20 )
+{
+   BUYTYPE := "STRONGBUY"
+
+}
+ELSE IF ( RSI[14;0] > 70  AND RSI[14;0] < 80 )
+{
+   BUYTYPE := "SELL"
+}
+ELSE IF ( RSI[14;0] < 30  AND RSI[14;0] > 20 )
+{
+   BUYTYPE := "BUY"
+}
+ELSE
+{
+   BUYTYPE := "HOLD"
+} 

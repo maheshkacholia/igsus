@@ -1,0 +1,1 @@
+select symbol,close[0]  from table where DARKCLOUDCOVER == true

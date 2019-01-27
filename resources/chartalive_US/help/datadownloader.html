@@ -1,0 +1,46 @@
+<html>
+<body>
+<b>How to Use Download Panel ?</b>
+<p>
+Data Download panel is used whenever you want to do scan for stock.
+
+The purpose of data downloader is to read stock files and put data from specified start and end date and the selected<br>
+resolution into memory so that scan can be faster.<br>
+<p>
+<font color=red>NOTE : </font>In all screens whever scan is applicable same data is used if data for that <br>
+category is already been downloaded<br>
+also if same stock is present in two differnt categories then if you try to download stock with differnt parameter then<br>
+that stock will not going to be downloaded again.<br>
+<p>
+This screen consist of category,start date,end date, Time resolution and download button<br>
+<p>
+Start Date --> Date from which you want to start your scan . This date is very important and your scan can less or more time<br>
+as you select this date because data will be downloaded in memory from that date. But if you are selecting a category which<br>
+has 300-400 or more stocks then if enough memory is not available then you will get a Out Of Memory exception<br>
+<p>
+You need to download your data as per your scan's requirement. If you are looking for yearly scan where moving average<br>
+200 ore more required then you need to chnage your start date accordingly.<br>
+<p>
+Generally you should store around 100-150 bars data which is around 5-8 months data<br>
+<p>
+If you are using MMA related scan then make sure you provide atleast 1 year data for god result as that indicator needs<br>
+that may data<br>
+
+If you want to chnage Start date permanately then Do following<br>
+Go to Configure-->Setting-->Screen date<br>
+
+
+End Date --> This date is used if you want to do change your end date of scan instead of today to something else.<br>
+If you checked the check box and changed the end date data will from start date and specified end date will be loaded in meory and<br>
+then all  scan will run on specified end date<br>
+
+Unload Category --> If you want to remove all already stored data in meory for a specified category and<br>
+want to scan using some differnt parameter or just want to save memory then you should that category<br>
+and click on unload category . It will unload all data which is loaded in memory<br>
+
+Time resolution --> Instead of 1 day scan you want to do apply your scan on weekly,monthly,2-day,3-day resolution<br>
+then clik on check box and select differnt resolution<br>
+
+Download--> It will start downloading data<br>
+</body>
+</html>

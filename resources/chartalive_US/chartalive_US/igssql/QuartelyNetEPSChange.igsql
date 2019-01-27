@@ -1,0 +1,3 @@
+@this formula calculate how much % eps change compare to same quarter a year ago -- IGSIndia ( download financial data before using )
+#netepschange :  ( BASICEPS[0;0] - BASICEPS[4;0]  ) * 100 / BASICEPS[4;0]  
+select symbol,close[0],QUARTER[0;0],BASICEPS[0;0],BASICEPS[4;0],netepschange[0] from table where netepschange[0] < 10000 sortby -1 * netepschange[0] 

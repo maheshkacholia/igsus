@@ -1,0 +1,2 @@
+#x:( ( close - dayopen ) / dayopen ) * 100  / ( ( compareintra[nifty;close] - compareintra[nifty;dayopen] ) ) / compareintra[nifty;dayopen] * 100
+select symbol,dayopen,close,compareintra[nifty;dayopen],compareintra[nifty;close],x from table sortby -1 *  x

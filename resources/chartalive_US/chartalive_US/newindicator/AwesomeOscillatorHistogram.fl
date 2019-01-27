@@ -1,0 +1,26 @@
+@PARAMETER LOWDAYS HIGHDAYS
+@VALUE 5 34
+@COMMENT The Awesome Oscillator is calculated by taking moaving average of ( HIGH + LOW ) / 2 for low and high period.
+@COMMENT The Awesome Oscillator is a histogram showing the market momentum of a low number of periods compared to the momentum of 
+@COMMENT a larger number of previous periods (by default, 5 vs. 34 periods).This indicator is intended to show 
+@COMMENT what's happening to the market for the current(low) period (compared to the momentum of a longer period), and 
+@COMMENT some traders use its signals for buying and selling decisions when histograph is green and red. 
+
+#MID1:( HIGH + LOW ) / 2
+A :=  MOV[MID1;$LOWDAYS$;S;0]
+B := MOV[MID1;$HIGHDAYS$;S;0]
+
+C :=  A - B
+IF ( BARNO < $HIGHDAYS$ )
+{
+}
+ELSE IF ( C > 0 )
+{ 
+     LINE{0,C ,GREEN}
+}
+ELSE
+{
+        LINE{0,C ,RED}
+}
+C     
+  

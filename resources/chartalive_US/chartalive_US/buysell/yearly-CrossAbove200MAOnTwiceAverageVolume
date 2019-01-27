@@ -1,0 +1,4 @@
+@COMMENT Stocks that had crossed 200 day Mvoing average with double moving average 
+@RECORDSTOUSE=220=
+#X: ( Close > SMA[200;0]  AND close[-5] < sma[close;-5]  AND  Volume > Mov[Volume;S;0) * 2 
+select symbol,close[0],high[0],low[0] from table where x 

@@ -1,0 +1,10 @@
+A := RSI[14;0] < 70 AND RSI[14;-1] > 72 AND RSI[14;-2] > 71 AND RSI[14;-3] > 70
+IF ( A )
+{
+   SELL{""}
+}
+B := RSI[14;0] > 30 AND RSI[14;-1] < 29 AND RSI[14;-2] < 28 AND RSI[14;-3] < 27
+IF ( B )
+{
+    BUY{ "" }
+} 

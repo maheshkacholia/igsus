@@ -1,0 +1,32 @@
+ A := ( CLOSE[0] > MMA[8;0] ) AND ( CLOSE[-1] > MMA[8;-1] )
+B :=   ( CLOSE[-2] < MMA[8;-2]  ) 
+BUY1 := A AND B
+IF ( BUY1 )
+{
+    BUYTYPE := "STRONGBUY"
+    BUY{ "" }
+}
+C := ( CLOSE[0] < MMA[8;0] ) AND ( CLOSE[-1] < MMA[8;-1] )
+SELL1 := ( CLOSE[-2] > MMA[8;-2]  )  AND C 
+IF ( SELL1 )
+{
+    
+BUYTYPE := "STRONGSELL"
+    SELL{ "" }
+
+}
+
+A := MACDLINE[12;26;9;0] > MACDSIGNAL[12;26;9;0] AND MACDLINE[12;26;9;-1] < MACDSIGNAL[12;26;9;-1]
+
+IF ( A )
+
+{
+   BUY{""}
+   BUYTYPE := "STRONGBUY"
+}
+B := MACDLINE[12;26;9;0] < MACDSIGNAL[12;26;9;0] AND MACDLINE[12;26;9;-1] > MACDSIGNAL[12;26;9;-1]
+IF ( B )
+{
+    SELL{""}
+    BUYTYPE := "STRONGSELL"
+}   

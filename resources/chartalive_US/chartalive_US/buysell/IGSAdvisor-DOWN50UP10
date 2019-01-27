@@ -1,0 +1,6 @@
+@COMMENT write comment here
+@RECORDSTOUSE=200=
+#x: ( ( close[-3] - close[-120] ) / close[-3] ) * 100
+#Y: ( ( close[0] - close[-2] ) / close[-2] ) * 100
+#Z: SMAANY[VOLUME[14;0];0] 
+select symbol,close,close[-20],x,Y,Z from table where x < -50 AND Y  >  5 AND CLOSE > 5   

@@ -1,0 +1,69 @@
+#Ctmp: MMA[14;0]  -  MMA[40;0]
+
+L := hist[low[0]]
+H := hist[high[0]]
+O := hist[open[0]]
+C := hist[close[0]]
+
+yesstr := "y'day low   " + L + " high " + H + " open " + O + " close " + C
+alerttext{yesstr,"white"}
+
+P  := ( H + L + C ) / 3 
+
+R4 := ( H  -  L )  *  1.1 / 2 + C 
+
+R3 :=  ( H  -  L ) * 1.1 / 4 + C 
+
+R2 :=  ( H  -  L ) * 1.1 / 6 + C 
+
+R1 :=  ( H  - L ) * 1.1 / 12 + C 
+
+S1 := C - ( H  - L ) * 1.1 / 12 
+
+S2 := C - ( H - L ) * 1.1 / 6 
+
+S3 := C - ( H - L ) * 1.1 / 4 
+
+S4 := C - ( H  - L ) * 1.1 / 2  
+
+Pivot := "pivot " +  floatattwo{ P }
+		
+Res1 :=  " Reistance    "  +  R1 + " , "  +  R2  +  " and "  +  R3
+Sup1 :=  " Intraday support  "  +  s1 + " , "  +  s2 + " and " + s3
+alerttext{res1,yellow}
+alerttext{sup1,yellow}
+
+IF ( BARNO  ==  0 )
+{
+   ADDTOGLOBAL{TEMP,0}
+}
+IF (  ( Ctmp > 0 AND Ctmp[-1] < 0 )    )
+{
+    BUY{"B"}
+  
+}
+ELSE IF ( Ctmp < 0 AND Ctmp[-1] > 0 )
+{
+   SELL{"S"}
+} 
+IF ( BARNO < 40 )
+{
+}
+ELSE IF ( Ctmp > 0 )
+{ 
+     IF  (  TEMP  ==  0  )
+     {
+         BUY{"B"}
+         ADDTOGLOBAL{TEMP,1}
+     } 
+}
+ELSE
+{
+    IF  (  TEMP  ==  0  )
+     {
+         SELL{"S"}
+         ADDTOGLOBAL{TEMP,1}
+     } 
+
+}
+

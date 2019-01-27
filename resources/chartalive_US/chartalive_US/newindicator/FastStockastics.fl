@@ -1,0 +1,19 @@
+@PARAMETER DAYS  MOVINGAVGPERIOD
+@VALUE 14 3
+@COMMENT Slow Stockastics  value above 80 shows overbought zone(sell region) below  20 is oversold zone(sell region)
+@COMMENT Readings above 80 and below 20 would indicate that the underlying security was trading near the top of its no of days  high(80) or low(20) range.
+@COMMENT Look for occasional oversold readings in an uptrend and ignore frequent overbought readings. 
+@COMMENT Similarly, look for occasional overbought readings in a strong downtrend and ignore frequent oversold readings
+.  
+D  := STOKPERD[$DAYS$;$MOVINGAVGPERIOD$;0]
+K  := STOKPERK[$DAYS$;$MOVINGAVGPERIOD$;0]
+
+PLOT3{D,RED}
+PLOTPRICEONLEFT{D,"%D",RED}
+PLOTPRICEONRIGHT{D,RED}
+c  := k  -  d
+PLOT1{80,RED}
+PLOT2{20,GREEN}
+K
+
+     

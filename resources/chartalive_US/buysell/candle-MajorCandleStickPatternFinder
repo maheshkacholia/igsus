@@ -1,0 +1,3 @@
+@COMMENT shows major candlestick pattern occured today for a stock
+@RECORDSTOUSE=5=
+select symbol,pattern from table where candlepattern

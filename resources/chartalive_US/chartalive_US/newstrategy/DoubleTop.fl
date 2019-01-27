@@ -1,0 +1,42 @@
+@PARAMETER MINCHANGE  TOPDIFF
+@VALUE 10   3
+@COMMENT PROVIDE MINCHANGE TO GET PEAK & MAX DIFF  IN NEAREST TOPS
+@COMMENT A double top is a reversal chart pattern which is defined by a chart where a financial instrument 
+@COMMENT makes a run up to a particular level, then drops back from that level, then makes a second run at that level, 
+@COMMENT and then finally drops back off again.
+@COMMENT Significance for traders
+@COMMENT The double top pattern shows demand outpacing supply (buyers predominate) up to the first top, 
+@COMMENT causing prices to rise. The supply/demand situation then reverses; supply outpaces demand (sellers predominate), 
+@COMMENT causing prices to fall. After a price "valley", buyers again predominate and prices rise. 
+@COMMENT If traders see that prices are not pushing past their level at the first top, sellers may again prevail, 
+@COMMENT lowering prices and causing a double top to form. It is generally regarded as a bearish sign if prices drop below 
+@COMMENT their level at the earlier valley between the two tops.
+
+#P:PEAK[CLOSE[0];$MINCHANGE$] 
+#T:TROUGH[CLOSE[0];$MINCHANGE$] 
+B := P
+RET := FALSE
+IF ( B <> 0   ) 
+{
+     X  :=   GETNOTZEROVALUE{2,P}
+     D :=  ( ( X - B ) * 100 )  /  ( X + .001 )
+     D :=  ABS{D}
+     IF ( D < $TOPDIFF$ )
+     {
+           POS := GETNOTZEROBARAWAY{2,P}
+                 LINEXY{BARNO,B,BARNO - POS,X,YELLOW}
+           GETVALUE{TEXT{ CLOSE[0],RED,"T1-" + CLOSE[0],8 },BARNO - POS} 
+        GETVALUE{TEXT{ CLOSE[0],RED,"T2-"  + CLOSE[0] ,8 },BARNO } 
+      
+      TVAL  := GETNOTZEROVALUE{1,T}
+      TPOS :=  BARNO - GETNOTZEROBARAWAY{1,T} 
+       LINEXY{TPOS - 30,TVAL,TPOS + 30,TVAL,YELLOW} 
+        GETVALUE{TEXT{ CLOSE[0],RED,"N-" + CLOSE[0] ,8 },TPOS } 
+      RET := TRUE
+      
+  }
+ 
+}
+ALERTTEXT{"T1-TOP1,T2-TOP2,N-NECKLINE"}
+ALERTTEXT{"DOUBLE TOP PATTERN"}
+  
